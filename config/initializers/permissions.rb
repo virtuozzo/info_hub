@@ -28,7 +28,7 @@ Permissions::Factory.tap do |f|
     actions :suspend, :login_as, :avatar, :generate_new_password_email
 
     action :read_prices do
-      action :read_billing_plan_price, :key => :billing_plan
+      action :read_billing_plan_price, :key => :billing_bucket
       action :read_outstanding_amount, :key => :outstanding_amount
       action :read_summary_payments, :key => :summary_payments
       action :read_hourly_price, :key => :hourly_price
