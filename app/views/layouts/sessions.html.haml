@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
+    = csrf_meta_tag
+    %title= application_title
+    = stylesheet_link_tag    "themes/session/#{OnApp[:system_theme]}", media: 'all'
+    = render_global_custom_css_link
+  %body
+    #container
+      .login
+        %h1= caption
+        = yield
+
+    :javascript
+      (function() {
+        var flasher = document.getElementById('flasher');
+        if(flasher) {
+          var yubikey_path = /yubikey/.test(location.pathname),
+              top = - flasher.offsetHeight / 2;
+          flasher.style.right = - flasher.offsetWidth - 18 + "px";
+          if(yubikey_path) { top += 10; }
+          flasher.style.top = top + "px";
+        }
+      }());

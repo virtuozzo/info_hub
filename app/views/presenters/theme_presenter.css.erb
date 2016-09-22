@@ -1,0 +1,29 @@
+<% if body_background_color? %>
+  body.bp {
+    background-color: <%= body_background_color %>;
+  }
+<% end %>
+
+<% if disable_body_background_image? %>
+body.bp {
+  background-image: none;
+}
+<% end %>
+
+<% if body_background_image? && !disable_body_background_image? %>
+  body.bp {
+    background-image: url('<%= body_background_image.url %>');
+  }
+<% end %>
+
+<% if powered_by_color? %>
+  #sidebar .powered a {
+    color: <%= powered_by_color %>;
+  }
+<% end %>
+
+<% if powered_by_hide? %>
+  #sidebar .powered {
+    visibility: hidden;
+  }
+<% end %>

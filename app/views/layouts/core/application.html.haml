@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=utf-8', 'http-equiv' => 'Content-type' }
+    = csrf_meta_tag
+    = render_favicon
+    %title!= render_page_title("#{ application_title } > ").gsub(/<.*&#8250;/, '')
+    = stylesheet_link_tag "themes/#{ system_theme }", media: 'all'
+    = javascript_include_tag 'application'
+    = render_global_custom_css_link
+    = render_custom_css_link
+    = safe_render Core.partials[:javascript_additions]
+  %body.bp
+    #container.container
+      = render_custom_header
+      .container_wrapper
+        .wrapper
+          .sidepanel#sidebar
+            .logo= render 'shared/logo'
+            = render 'shared/navigation_tree'
+          .mainpanel
+            .header#header
+              .nav= safe_render Core.partials[:navigation_menu]
+            = render 'shared/flash_messages'
+            = safe_render Core.partials[:onapp_warnings]
+            #internal_container
+              = render_breadcrumbs
+              = yield :subnav
+              = default_infobox_presenter.render
+              = yield
+        .footer#footer
+      = render_custom_footer
+    = safe_render Core.partials[:javascript_popup]

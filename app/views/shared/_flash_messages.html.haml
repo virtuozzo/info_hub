@@ -1,0 +1,5 @@
+- flash.each do |key, value|
+  - if value.present?
+    %span#flasher{class: "flash #{key}"}
+      %span{class: "#{key} icon"}= value
+      %a.close_flash.icon

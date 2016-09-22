@@ -1,0 +1,6 @@
+- if saml_id_providers.any? || o_auth_providers.any?
+  .saml
+    %h2= t('words.login_with')
+    %ul.login_providers
+      = render saml_id_providers
+      = render o_auth_providers

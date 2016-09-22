@@ -1,0 +1,51 @@
+PATH
+  remote: .
+  specs:
+    presenter (0.0.1)
+      actionpack (= 3.2.22)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionpack (3.2.22)
+      activemodel (= 3.2.22)
+      activesupport (= 3.2.22)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      journey (~> 1.0.4)
+      rack (~> 1.4.5)
+      rack-cache (~> 1.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.2.1)
+    activemodel (3.2.22)
+      activesupport (= 3.2.22)
+      builder (~> 3.0.0)
+    activesupport (3.2.22)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    builder (3.0.4)
+    erubis (2.7.0)
+    hike (1.2.3)
+    i18n (0.7.0)
+    journey (1.0.4)
+    multi_json (1.12.1)
+    rack (1.4.7)
+    rack-cache (1.6.1)
+      rack (>= 0.4)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    sprockets (2.2.3)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    tilt (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  presenter!
+
+BUNDLED WITH
+   1.12.5

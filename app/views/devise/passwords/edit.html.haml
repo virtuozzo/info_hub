@@ -1,0 +1,11 @@
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'password_reset' }) do |f|
+  - if f.object.errors.present?
+    - flash.now[:error] = f.object.errors.full_messages.to_sentence
+    = render 'shared/flash_messages'
+
+  = f.input :reset_password_token, as: :hidden, wrapper: :clear
+  .text_input
+    = f.input :password, required: true, wrapper: :no_label, input_html: { placeholder: t('.new_password') }
+  .text_input.field_with_submit
+    = f.input :password_confirmation, required: true, wrapper: :no_label, input_html: { placeholder: t('.confirm_password') }
+    = f.submit  t('.submit'), title: t('.submit')

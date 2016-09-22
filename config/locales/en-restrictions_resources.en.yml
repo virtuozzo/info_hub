@@ -1,0 +1,69 @@
+en:
+  restrictions:
+    resources:
+      activity_logs: Activity Logs
+      auto_scaling_configurations: Autoscaling Configuration
+      backup_server_groups: Backup Server Zones
+      backup_servers: Backup Servers
+      backups: Backups
+      billing_user_resource_bases: Base Resources
+      billing_user_plans: Billing Plans
+      blueprints: Blueprints
+      cdn_resources: CDN resources
+      user_hourly_stats: CDN Usage Statistics
+      customer_networks: Customer Networks
+      customer_vlans: Customer VLANs
+      data_store_groups: Data Store Zones
+      data_stores: Data Stores
+      disks: Disks
+      dns_zones: DNS Zones
+      edge_groups: Edge Groups
+      edge_servers: Edge Servers
+      firewall_rules: Firewall Rules
+      hypervisor_groups: Compute Zones
+      hypervisors: Compute Resources
+      iframes: IFrames
+      image_template_groups: Template Groups
+      image_templates: Templates
+      io_stats: IO Statistics
+      ip_address_joins: Virtual Server's IP Addresses
+      ip_addresses: IP Addresses
+      last_access_log_items: Last Access Log
+      load_balancers: Load Balancers
+      load_balancing_clusters: Load Balancing Clusters
+      log_items: Log Items
+      nameservers: Nameservers
+      network_groups: Network Zones
+      networks: Networks
+      o_auth_providers: OAuth Providers
+      payments: Payments
+      recipe_groups: Recipe Groups
+      recipes: Recipes
+      roles: Roles
+      saml_id_providers: SAML Identity Providers
+      schedule_logs: Schedule Logs
+      schedules: Schedules
+      storage_servers: Storage Servers
+      transactions: Transactions
+      user_groups: User Groups
+      user_white_lists: White IPs
+      users: Users
+      org_networks: Org Networks
+      vapp_networks: VApp Networks
+      external_networks: External Networks
+      vapps: vApps
+      vcloud_vapp_templates: vApp Templates
+      vcloud_media: Media
+      vcloud_catalogs: Catalogs
+      vcloud_credentials: vCloud Credentials
+      vcloud_provider_vdcs: Provider Resource Pools
+      vdcs: vDCs
+      vdc_storage_profiles: vDC Storage Profiles
+      virtual_machine_snapshots: Virtual Server Snapshots
+      virtual_machines: Virtual Servers
+      vm_hourly_stats: Virtual Machine Statistics
+      edge_gateways: Edge Gateways
+      vcloud_templates: Orchestration Models
+    types:
+      by_user_group: by User Group
+      by_billing_plan: by Billing Plan

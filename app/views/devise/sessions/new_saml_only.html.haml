@@ -1,0 +1,5 @@
+- page_title t('.title', app_name: OnApp.configuration.app_name)
+
+= render 'shared/flash_messages'
+= render partial: 'authentication',
+  locals: { saml_id_providers: SamlIdProvider.active, o_auth_providers: OAuthProvider.none }

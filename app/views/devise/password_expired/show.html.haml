@@ -1,0 +1,12 @@
+- page_title t('.title', app_name: OnApp.configuration.app_name)
+
+= simple_form_for(resource, as: resource_name, url: [core_engine, resource_name, :password_expired], html: { class: 'password_expired' }) do |f|
+  = render 'shared/flash_messages'
+
+  .text_input
+    = f.input :current_password, wrapper: :no_label, input_html: { placeholder: t('.current_password') }
+  .text_input
+    = f.input :password, wrapper: :no_label, input_html: { placeholder: t('.new_password') }
+  .text_input.field_with_submit
+    = f.input :password_confirmation, wrapper: :no_label, input_html: { placeholder: t('.confirm_password') }
+    = f.submit t('sessions.new.submit'), title: t('sessions.new.submit')

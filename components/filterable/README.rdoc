@@ -1,0 +1,3 @@
+= Filterable
+
+Just include it in your Gemfile: `gem 'filterable'`

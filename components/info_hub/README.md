@@ -1,0 +1,3 @@
+InfoHub
+
+System-wide configuration.

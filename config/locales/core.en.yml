@@ -1,0 +1,12 @@
+en:
+  layouts:
+    application:
+      app_title_hint: "%{app_name} | cloud software for hosts"
+  powered_by: Powered by
+  sessions:
+    new:
+      title: Welcome to %{app_name}
+      password_recovery: Password recovery
+      legend: Log In
+      note: "Please enter your username and password:"
+      submit: Log In
