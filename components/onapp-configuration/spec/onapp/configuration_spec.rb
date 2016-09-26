@@ -13,12 +13,13 @@ describe OnApp::Configuration do
     expect(subject.app_name).to eq('1')
   end
 
-  context '.defaults?' do
-    subject { OnApp.configuration.default?(:nfs_root_ip) }
+  context '#default?' do
+    subject { OnApp.configuration.default?(:system_email) }
+
     specify { expect(subject).to be true }
 
     it 'change default value' do
-      described_class.any_instance.stub(:nfs_root_ip => 'custom value')
+      allow_any_instance_of(described_class).to receive(:system_email).and_return 'system_email@onapp.com'
 
       expect(subject).to be false
     end
@@ -31,7 +32,7 @@ describe OnApp::Configuration do
   end
 
   context 'read/write' do
-    let(:custom_config) { { data_path: '/data', backups_path: '/backups' } }
+    let(:custom_config) { { system_email: 'system_email@onapp.com', system_host: '192.12.1.1' } }
     let(:path) { '/tmp/onapp.yml.test' }
     let(:defaults) { described_class.defaults }
     let(:configuration_class) { OnApp::Configuration }
@@ -48,16 +49,16 @@ describe OnApp::Configuration do
         expect {
           subject.load_from_file
         }.to change {
-          [subject.data_path, subject.backups_path]
-        }.from([defaults[:data_path], defaults[:backups_path]])
-        .to([custom_config[:data_path], custom_config[:backups_path]])
+          [subject.system_email, subject.system_host]
+        }.from([defaults[:system_email], defaults[:system_host]])
+        .to([custom_config[:system_email], custom_config[:system_host]])
       end
 
       it 'does nothing if config file not exists' do
         File.delete(path) if File.file?(path)
         expect {
           subject.load_from_file
-        }.not_to change { [subject.data_path, subject.backups_path] }
+        }.not_to change { [subject.system_email, subject.system_host] }
       end
     end
 
@@ -66,29 +67,27 @@ describe OnApp::Configuration do
         File.write(path, '')
 
         expect {
-          subject.data_path = custom_config[:data_path]
-          subject.backups_path = custom_config[:backups_path]
+          subject.system_email = custom_config[:system_email]
+          subject.system_host = custom_config[:system_host]
           subject.save_to_file
         }.to change {
           config_file.read
-          [config_file.get(:data_path), config_file.get(:backups_path)]
+          [config_file.get(:system_email), config_file.get(:system_host)]
         }.from([nil, nil])
-        .to([custom_config[:data_path], custom_config[:backups_path]])
+        .to([custom_config[:system_email], custom_config[:system_host]])
       end
     end
   end
 
   describe '.update_attributes' do
     let(:conf) { OnApp.configuration.dup }
-    let(:attributes) {
-      { use_yubikey_login: true, rabbitmq_port: 7777 }
-    }
+    let(:attributes) { { system_email: 'new_system_email@onapp.com', system_host: '243.12.33.1' } }
 
     it 'updates choosen attributes' do
       conf.update_attributes(attributes)
 
-      expect(conf.use_yubikey_login).to be true
-      expect(conf.rabbitmq_port).to eq 7777
+      expect(conf.system_email).to eq 'new_system_email@onapp.com'
+      expect(conf.system_host).to eq '243.12.33.1'
     end
   end
 end

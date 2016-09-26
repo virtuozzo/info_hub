@@ -28,7 +28,7 @@ class Core::DeviseParentController < ActionController::Base
       { system_email:         'app@onapp.com',
         system_support_email: 'support@onapp.com',
         system_host:          'onapp.com'
-      }.any? { |opt, val| OnApp.configuration.send(opt) == val }
+      }.any? { |opt, val| OnApp.configuration.public_send(opt) == val }
     end
   end
 

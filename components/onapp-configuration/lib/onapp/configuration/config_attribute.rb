@@ -1,6 +1,9 @@
 module OnApp
   class Configuration
     module ConfigAttribute
+      BOOLEAN_SETTER   = :boolean
+      NUMERICAL_GETTER = :numerical
+
       def attributes_to_save_to_file
         @attributes_to_save_to_file ||= []
       end

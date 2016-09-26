@@ -6,15 +6,13 @@ require_relative '../../custom_validators/lib/custom_validators'
 require_relative 'onapp/configuration' # has to be uploaded before running load hooks
 
 module OnApp
-  autoload :CentOSVersion, 'onapp/centos_version'
+  autoload :CentOSVersion, File.expand_path('onapp/centos_version', __dir__)
 
   class << self
+    attr_writer :configuration
+
     def configuration
       @configuration ||= Configuration.new
-    end
-
-    def configuration=(new_configuration)
-      @configuration = new_configuration
     end
 
     def [](*args)
@@ -27,5 +25,5 @@ module OnApp
     end
   end
 
-  ActiveSupport.run_load_hooks(:onapp_configuration, self)
+  ActiveSupport.run_load_hooks(:'onapp-configuration', self)
 end
