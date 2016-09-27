@@ -1,0 +1,109 @@
+en:
+  permission:
+    settings:
+      group: Settings
+      label: Any action on settings
+      desc: The user can take any action on settings
+      restart_dashboard_client:
+        label: Restart dashboard client
+        desc: The user can restart the dashboard client
+      read:
+        label: See read settings
+        desc: The user can see all settings
+      update:
+        label: Update settings
+        desc: The user can edit everything in the Settings menu
+      manage_ssl_certificate:
+        label: Manage SSL certificate
+        desc: User can upload and update SSL certificate located under config/ssl_certificates fodler
+      version:
+        label: View OnApp version
+        desc: User can navigate to /version to see which version of OnApp is installed
+    users:
+      group: Users
+      label: Any action on users
+      desc: The user can take any action on user accounts
+      create:
+        label: Create any user
+        desc: The user can create a new user account
+      delete:
+        label: Destroy any user
+        desc: The user can delete any user account
+        own:
+          label: Destroy own user
+          desc: The user can only delete their own user account
+      generate_new_password_email:
+        label: Allow user to send password reminder
+        desc: The user can send password reminder for other users
+      login_as:
+        label: User can login as another user
+        desc: The user can login as another user
+      connect_aws:
+        label: Connect AWS Account
+        desc: The user can connect AWS Account
+      read:
+        label: See all users
+        desc: The user can see all user accounts
+        own:
+          label: See own users
+          desc: The user can only see their own user account
+      unlock:
+        label: Unlock any user
+        desc: The user can unlock any user account
+      update:
+        label: Update any user
+        desc: The user can edit any user account
+        own:
+          label: Update own user
+          desc: The user can only edit their own user account
+      update_api_key:
+        label: Generate API key
+        desc: The user can generate API Key for all users
+        own:
+          label: Generate own API key
+          desc: The user can only generate own key
+      update_yubikey:
+        label: Update Yubikey
+        desc: The user can modify Yubikey
+        own:
+          label: Update own Yubikey
+          desc: The user can modify own Yubikey
+      suspend:
+        label: Suspend and unsuspend users
+        desc: "the user can suspend and unsuspend other users' accounts"
+      read_prices:
+        label: See all users prices
+        desc: "The user can see all users' prices"
+        billing_plan:
+          label: See user billing plan
+          desc: See user billing plan
+        outstanding_amount:
+          label:  See user outstanding amount
+          desc:  See user outstanding amount
+        summary_payments:
+          label: See user summary payments
+          desc: See user summary payments
+        total_cost:
+          label: See user total cost
+          desc: See user total cost
+        hourly_price:
+          label: See user hourly prices
+          desc: See user hourly prices
+        monthly_price:
+          label: See user monthly prices
+          desc: See user monthly prices
+        vm_prices:
+          label: See user virtual server prices
+          desc: See user virtual server prices
+        backups_templates:
+          label: See user backups/templates prices
+          desc: See user backups/templates prices
+      change_password:
+        label: Change user password
+        desc: Change user password
+        own:
+          label: Change own password
+          desc: The user can only change own password
+      avatar:
+        label: Upload avatar
+        desc: Allow to upload avatar or use gravatar instead
