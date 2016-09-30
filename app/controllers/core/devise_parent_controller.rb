@@ -1,4 +1,6 @@
 class Core::DeviseParentController < ActionController::Base
+  include *Core.constantized_extensions(:'core/devise_parent_controller')
+
   protect_from_forgery except: :create
 
   layout 'sessions'

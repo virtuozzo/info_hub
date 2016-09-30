@@ -1,4 +1,6 @@
 class Core::Users::SessionsController < Devise::SessionsController
+  include *Core.constantized_extensions(:'core/users/sessions_controller')
+
   def new
     return super unless force_saml_login?
 

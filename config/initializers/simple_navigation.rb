@@ -1,1 +1,1 @@
-SimpleNavigation.config_file_paths << File.expand_path('../../', __FILE__)
+SimpleNavigation.config_file_paths << File.expand_path('../', __dir__)

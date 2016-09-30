@@ -1,4 +1,6 @@
 class Role < OnApp::Models::Base
+  concerned_with *Core.concerns.fetch(:role, [])
+
   has_many :roles_permissions, dependent: :destroy
   has_many :permissions, through: :roles_permissions
   has_many :users_roles

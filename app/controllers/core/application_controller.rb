@@ -1,6 +1,8 @@
 require 'core/onapp/responder'
 
 class Core::ApplicationController < ActionController::Base
+  include Authorization
+
   layout 'core/application'
 
   protect_from_forgery
@@ -48,3 +50,7 @@ class Core::ApplicationController < ActionController::Base
     Breadcrumbs::CRUDCreator.prepare_params(self, @virtual_machine, breadcrumbs_nested: breadcrumbs_nested?)
   end
 end
+
+# Have to put it there because I'm getting an unexpected errors in controller tests if I put it inside
+# a class definition
+Core::ApplicationController.include *Core.constantized_extensions(:'core/application_controller')

@@ -31,24 +31,43 @@ require_relative '../components/permissions/lib/permissions'
 require_relative '../components/presenter/lib/presenter'
 
 module Core
-  require 'core/engine'
-  require 'core/devise_security_extension/controllers/helpers'
+  require_relative 'core/engine'
+  require_relative 'core/devise_security_extension/controllers/helpers'
+  require_relative '../app/models/onapp/models/base'
 
-  class << self
-    def partials
-      @partials ||= {}
-    end
+  mattr_reader :partials
+  @@partials = {}
 
-    def additional_helpers_paths
-      @additional_helpers_paths ||= []
-    end
+  mattr_reader :additional_helpers_paths
+  @@additional_helpers_paths = []
 
-    def devise_controllers
-      @devise_controllers ||= { sessions: 'core/users/sessions' }
-    end
+  mattr_reader :devise_controllers
+  @@devise_controllers = { sessions: 'core/users/sessions' }
 
-    def main_navigation_group_methods
-      @main_navigation_group_methods ||= [:core_main_navigation_groups]
+  mattr_reader :main_navigation_group_methods
+  @@main_navigation_group_methods = [:core_main_navigation_groups]
+
+  mattr_reader :concerns
+  @@concerns = {}
+
+  mattr_reader :extensions
+  @@extensions = {}
+
+  def self.add_concerns(params = {})
+    params.each_pair do |key, array|
+      concerns[key] ||= []
+      concerns[key].concat(array)
     end
+  end
+
+  def self.add_extensions(params = {})
+    params.each_pair do |key, extension|
+      extensions[key] ||= []
+      extensions[key] << extension
+    end
+  end
+
+  def self.constantized_extensions(key)
+    extensions.fetch(key, []).map(&:constantize)
   end
 end

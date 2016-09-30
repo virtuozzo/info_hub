@@ -1,4 +1,6 @@
 class Theme < OnApp::Models::Base
+  concerned_with *Core.concerns.fetch(:theme, [])
+
   SALT = '!@#$%^&*()_+'
 
   mount_uploader :logo,                  ThemeImageUploader

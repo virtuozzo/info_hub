@@ -1,7 +1,5 @@
-require_dependency 'onapp/models/base'
-
 class User < OnApp::Models::Base
-  concerned_with :infobox_methods, :theme_methods
+  concerned_with :infobox_methods, :theme_methods, *Core.concerns.fetch(:user, [])
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :lockable, :encryptable,
          :password_expirable, :omniauthable, :yubikey_database_authenticatable, omniauth_providers: [:saml, :facebook, :google]
