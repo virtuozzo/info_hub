@@ -21,11 +21,6 @@ class Role < OnApp::Models::Base
 
   API_METHODS = [:permissions]
 
-  def reset_users_counter
-    stmt = Role.where(id: id).arel.compile_update(Role.arel_table[:users_count] => users.count)
-    self.class.connection.update stmt
-  end
-
   def self.find_admin_id
     admin_role = admin.first
     if admin_role
@@ -38,6 +33,11 @@ class Role < OnApp::Models::Base
   def self.admin_role_identifiers
     ids = InfoHub.get(:role, :admin_roles) rescue nil
     ids || ['admin']
+  end
+
+  def reset_users_counter
+    stmt = Role.where(id: id).arel.compile_update(Role.arel_table[:users_count] => users.count)
+    self.class.connection.update stmt
   end
 
   def serializable_hash(options = {})

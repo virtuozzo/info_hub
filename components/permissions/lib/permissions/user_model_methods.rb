@@ -5,7 +5,7 @@ module Permissions
     def self.attached_to(relation_name)
       # def permission_identifiers
       define_method :permission_identifiers do
-        @permission_identifiers ||= public_send(relation_name).map(&:identifier)
+        @permission_identifiers ||= public_send(relation_name).pluck(:identifier)
       end
 
       self
@@ -23,9 +23,9 @@ module Permissions
     # user.has_any_permission?(ImageTemplate, :read, :update,
     #                          scopes: [:user, :own, :public])
     def has_any_permission?(resource, *actions)
-      scopes = Array(actions.extract_options![:scopes])
-
       return true if has_permission?(resource)
+
+      scopes = [:all].concat(Array(actions.extract_options![:scopes])).uniq
 
       actions.each do |action|
         return true if has_permission?(resource, action)

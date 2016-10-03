@@ -25,6 +25,20 @@ class User < ActiveRecord::Base
   end
 
   def permissions
-    [OpenStruct.new(identifier: 'users.create')]
+    PermissionStubbedCollection.new([OpenStruct.new(identifier: 'users.create')])
   end
+
+  class PermissionStubbedCollection
+    attr_reader :collection
+
+    def initialize(collection)
+      @collection = collection
+    end
+
+    def pluck(attribute)
+      collection.map { |permission| permission.public_send(attribute) }
+    end
+  end
+
+  private_constant :PermissionStubbedCollection
 end
