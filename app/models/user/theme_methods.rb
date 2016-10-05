@@ -3,8 +3,9 @@ class User
 
   def theme
     return @theme if defined?(@theme)
+    active_themes = Theme.active
 
-    @theme = Theme.active.by_user_group(user_group_id).first
+    @theme =  active_themes && user_group_id ? Theme.active.by_user_group(user_group_id).first : nil
   end
 
   # def theme_logo_url

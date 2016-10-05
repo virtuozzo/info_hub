@@ -11,25 +11,25 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*'] + ['README.rdoc']
 
-  s.add_dependency 'rails', '3.2.22'
-  s.add_dependency 'devise', '2.2.3'
-  s.add_dependency 'mysql2', '~>0.3.14'
-  s.add_dependency 'yubikey_database_authenticatable', '~>5.2.0'
+  s.add_dependency 'rails', '~>4.2'
+  s.add_dependency 'devise', '~>3.5'
+  s.add_dependency 'mysql2', '0.3.14'
+  s.add_dependency 'yubikey_database_authenticatable'
   s.add_dependency 'devise-encryptable', '0.1.1'
-  s.add_dependency 'devise_security_extension', '0.7.2'
+  s.add_dependency 'devise_security_extension', '0.10.0'
   s.add_dependency 'omniauth-oauth2', '1.3.1'
   s.add_dependency 'omniauth-saml', '1.4.1'
   s.add_dependency 'omniauth-facebook', '1.6.0'
   s.add_dependency 'omniauth-google-oauth2', '0.2.4'
   s.add_dependency 'hashie', '~>3.3.1'
 
-  s.add_dependency 'haml-rails', '0.4'
+  s.add_dependency 'haml-rails', '~> 0.9'
   s.add_dependency 'haml', '4.0.7'
   s.add_dependency 'rabl', '0.8.0'
   s.add_dependency 'oj', '2.14.6'
-  s.add_dependency 'simple_form', '2.1.0'
+  s.add_dependency 'simple_form', '3.3.1'
   s.add_dependency 'simple-navigation', '3.10.0'
-  s.add_dependency 'carrierwave', '0.6.2'
+  s.add_dependency 'carrierwave', '0.11.2'
   s.add_dependency 'will_paginate', '3.0.4'
 
   s.add_dependency 'onapp-utils'

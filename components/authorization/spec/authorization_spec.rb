@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Authorization, type: :helper do
   let!(:wl_1)        { create :user_white_list, ip: '10.0.0.1' }
   let!(:wl_2)        { create :user_white_list, ip: '10.0.0.1/24' }
-  let(:current_user) { double(user_white_lists: UserWhiteList.scoped) }
+  let(:current_user) { double(user_white_lists: UserWhiteList.all) }
   let(:test_class) do
     Class.new do
       include Authorization

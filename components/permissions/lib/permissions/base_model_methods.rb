@@ -4,12 +4,6 @@ module Permissions
   module BaseModelMethods
     extend ActiveSupport::Concern
 
-    included do
-      scope :none, -> { where('1 = 0') }
-      # this scope can be redefined in classes that include current module
-      scope :all_scope, ->(*) { scoped.readonly(false) }
-    end
-
     def authorized_for?(user, action)
       Authorizer.authorized_object?(self, user, action)
     end
@@ -18,6 +12,10 @@ module Permissions
       # Specially for ImageTemplate
       def user_scope
         where(arel_table[:user_id].not_eq(nil))
+      end
+
+      def all_scope(*args)
+        all.readonly(false)
       end
 
       def authorized_for?(user, action, options = {})

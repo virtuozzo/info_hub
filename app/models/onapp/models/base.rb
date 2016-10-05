@@ -18,9 +18,9 @@ module OnApp
       ## Automatically give any entries an identifier
       before_create :generate_identifier
 
-      scope :allowed_for_reseller, ->    { scoped } #stub
-      scope :by_user_group,        ->(*) { scoped } #stub
-      scope :by_billing_plan,      ->(*) { scoped } #stub
+      scope :allowed_for_reseller, ->    { all } #stub
+      scope :by_user_group,        ->(*) { all } #stub
+      scope :by_billing_plan,      ->(*) { all } #stub
 
       def to_s
         respond_to?(:label) ? label : super
@@ -50,15 +50,15 @@ module OnApp
              end
         id = Array.wrap(id)
 
-        id.present? ? where(arel_table[:id].not_eq_all(id)) : scoped
+        id.present? ? where(arel_table[:id].not_eq_all(id)) : all
       end
 
       def self.add_by_association_user_scope(association = :virtual_machine, klass = 'VirtualMachine')
-        scope :by_user, ->(value) { joins(association).merge(klass.constantize.by_user(value)) }
+        scope :by_user, ->(value) { joins(association).where(association => klass.constantize.by_user(value)) }
       end
 
       def self.add_by_association_user_group_scope(association = :user, klass = 'User')
-        scope :by_user_group, ->(user) { joins(association).merge(klass.constantize.by_user_group(user)) }
+        scope :by_user_group, ->(user) { joins(association).where(association => klass.constantize.by_user_group(user)) }
       end
 
       def self.add_by_billing_user_plan_scope(resource_name = self)
@@ -72,7 +72,7 @@ module OnApp
       end
 
       def self.add_by_association_billing_plan_scope(association, klass)
-        scope :by_billing_plan, ->(user) { joins(association).merge(klass.constantize.by_billing_plan(user)) }
+        scope :by_billing_plan, ->(user) { joins(association).where(association => klass.constantize.by_billing_plan(user)) }
       end
 
       def self.desc(column = :id)
