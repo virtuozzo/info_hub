@@ -2,7 +2,9 @@ class User
   validates :system_theme, inclusion: OnApp[:available_system_themes], allow_blank: true
 
   def theme
-    @theme ||= Theme.active.by_user_group(user_group_id).first
+    return @theme if defined?(@theme)
+
+    @theme = Theme.active.by_user_group(user_group_id).first
   end
 
   # def theme_logo_url
