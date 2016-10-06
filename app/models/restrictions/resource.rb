@@ -1,6 +1,6 @@
 module Restrictions
   class Resource < OnApp::Models::Base
-    RESTRICTION_TYPES = %w( by_billing_plan by_user_group ).freeze
+    RESTRICTION_TYPES = %w( by_billing_bucket by_user_group ).freeze
     BY_USER_GROUP_TYPE = 'by_user_group'.freeze
 
     attr_readonly :identifier, :restriction_type
