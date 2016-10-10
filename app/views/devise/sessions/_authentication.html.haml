@@ -2,5 +2,5 @@
   .saml
     %h2= t('words.login_with')
     %ul.login_providers
-      = render saml_id_providers
-      = render o_auth_providers
+      = render partial: '/users/saml_id_providers/saml_id_provider', collection: saml_id_providers
+      = render partial: '/users/o_auth_providers/o_auth_provider', collection: o_auth_providers
