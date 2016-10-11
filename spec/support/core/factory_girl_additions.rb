@@ -25,6 +25,10 @@ module FactoryGirlAdditions
   end
 end
 
+def insert_list_in_one_query(klass, name, amount, *traits_and_overrides, &block)
+  klass.import(amount.times.map { pure name, *traits_and_overrides, &block }, validate: false)
+end
+
 class NoCallbacksStrategy
   def association(runner)
     runner.run
