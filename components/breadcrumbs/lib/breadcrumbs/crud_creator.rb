@@ -18,6 +18,10 @@ module Breadcrumbs
       end
     end
 
+    def self.vm_child?(params)
+      (params.keys & Breadcrumbs.parent_ids).present?
+    end
+
     def initialize(controller, resource, *args)
       options                     = args.extract_options!
       @breadcrumbs_nested         = options[:breadcrumbs_nested]
