@@ -11,10 +11,10 @@ GIT
 
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: 545919de40f3838aa70e415a5d14839bcfd7fc88
-  tag: v5.0.0
+  revision: d2585f70e09c1bb335e7a7636a300e2d1bf58cae
+  tag: v5.0.1
   specs:
-    onapp-utils (5.0.0)
+    onapp-utils (5.0.1)
       activesupport (= 3.2.22)
 
 PATH
@@ -28,7 +28,7 @@ PATH
       haml (= 4.0.7)
       haml-rails (= 0.4)
       hashie (~> 3.3.1)
-      mysql2 (= 0.3.14)
+      mysql2 (~> 0.3.14)
       oj (= 2.14.6)
       omniauth-facebook (= 1.6.0)
       omniauth-google-oauth2 (= 0.2.4)

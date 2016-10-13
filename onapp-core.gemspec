@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '3.2.22'
   s.add_dependency 'devise', '2.2.3'
-  s.add_dependency 'mysql2', '0.3.14'
+  s.add_dependency 'mysql2', '~>0.3.14'
   s.add_dependency 'yubikey_database_authenticatable'
   s.add_dependency 'devise-encryptable', '0.1.1'
   s.add_dependency 'devise_security_extension', '0.7.2'

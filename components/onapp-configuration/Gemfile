@@ -2,4 +2,4 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'onapp-utils', git: 'git@bitbucket.org:onappcore/onapp-utils.git', tag: 'v5.0.0'
+gem 'onapp-utils', git: 'git@bitbucket.org:onappcore/onapp-utils.git', tag: 'v5.0.1'
