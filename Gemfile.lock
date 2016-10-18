@@ -11,10 +11,10 @@ GIT
 
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: 95f8d330c13fb9bd472b58ca251ea96b5a708285
-  tag: v5.1.0
+  revision: 3033ff386460719d87fb42bfdf884d565d7b2cf0
+  tag: v5.1.1
   specs:
-    onapp-utils (5.1.0)
+    onapp-utils (5.1.1)
       activesupport (= 3.2.22)
 
 PATH
