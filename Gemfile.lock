@@ -11,10 +11,10 @@ GIT
 
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: d2585f70e09c1bb335e7a7636a300e2d1bf58cae
-  tag: v5.0.1
+  revision: 95f8d330c13fb9bd472b58ca251ea96b5a708285
+  tag: v5.1.0
   specs:
-    onapp-utils (5.0.1)
+    onapp-utils (5.1.0)
       activesupport (= 3.2.22)
 
 PATH
@@ -33,7 +33,7 @@ PATH
       omniauth-facebook (= 1.6.0)
       omniauth-google-oauth2 (= 0.2.4)
       omniauth-saml (= 1.4.1)
-      onapp-utils (~> 5.0.0)
+      onapp-utils (~> 5.1.0)
       rabl (= 0.8.0)
       rails (= 3.2.22)
       simple-navigation (= 3.10.0)
