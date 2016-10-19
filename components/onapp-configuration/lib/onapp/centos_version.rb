@@ -14,6 +14,11 @@ module OnApp
     end
     alias_method :six?, :centos6?
 
+    def centos7?
+      version == 7
+    end
+    alias_method :seven?, :centos7?
+
     private
 
     def cat_version
