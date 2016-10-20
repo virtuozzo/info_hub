@@ -21,8 +21,9 @@ module OnApp
 
     private
 
+    # TODO: refactor & write specs(CORE-7983)
     def cat_version
-      /\s(?<version>\d)\.\d+\s/ =~ `cat /etc/redhat-release`
+      /\s(?<version>\d)(\.\d+){1,2}\s/ =~ `cat /etc/redhat-release`
       version.to_i
     end
   end
