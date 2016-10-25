@@ -71,8 +71,7 @@ module Core
     end
 
     def nav_item_for(path, options = {})
-      parsed_path = Rails.application.routes.recognize_path(path, :method => :get)
-      item_controller = parsed_path[:controller]
+      item_controller = options[:controller] || Rails.application.routes.recognize_path(path, method: :get)[:controller]
 
       nav_key = options.delete(:key) || item_controller
       icon_class = 'icon' unless options.delete(:skip_icon)
