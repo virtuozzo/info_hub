@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'carrierwave', '0.6.2'
   s.add_dependency 'will_paginate', '3.0.4'
 
-  s.add_dependency 'onapp-utils', '~>5.1.0'
+  s.add_dependency 'onapp-utils'
 
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'rspec-rails'

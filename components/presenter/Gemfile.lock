@@ -26,6 +26,9 @@ GEM
     builder (3.0.4)
     diff-lcs (1.2.5)
     erubis (2.7.0)
+    fuubar (2.2.0)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     hike (1.2.3)
     i18n (0.7.0)
     journey (1.0.4)
@@ -48,6 +51,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    ruby-progressbar (1.8.1)
     sprockets (2.2.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -59,6 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  fuubar
   presenter!
   rspec
 

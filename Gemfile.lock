@@ -33,7 +33,7 @@ PATH
       omniauth-facebook (= 1.6.0)
       omniauth-google-oauth2 (= 0.2.4)
       omniauth-saml (= 1.4.1)
-      onapp-utils (~> 5.1.0)
+      onapp-utils
       rabl (= 0.8.0)
       rails (= 3.2.22)
       simple-navigation (= 3.10.0)
