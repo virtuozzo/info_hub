@@ -112,5 +112,11 @@ module Core
 
       block_to_partial 'shared/powered_by', powered_by_text: text, powered_by_url: url, powered_by_link_title: title
     end
+
+    # This is temporary solution for pagination bug on pages extracted to engines
+    # it does not affect pagination in interface in any way
+    def format_paginator(section)
+      section.gsub("\"/ver/", "\"#{controller.env['PATH_INFO']}/").html_safe
+    end
   end
 end
