@@ -111,12 +111,14 @@ module Authorization
       format.html do
         store_location
         flash[:error] = message if user_signed_in? || show_error
+
         if request.xhr?
           head :unauthorized
         else
-          redirect_to user_signed_in? ? root_path : new_user_session_path
+          redirect_if_denied
         end
       end
+
       format.any(:json, :xml) do
         request_http_basic_authentication I18n.t('system.api_auth', app_name: app_name)
       end
@@ -136,7 +138,7 @@ module Authorization
           format.json { render text: { 'error' => msg }.to_json, status: :forbidden }
         else
           flash[:error] = msg if user_signed_in?
-          redirect_to user_signed_in? ? root_path : new_user_session_path
+          redirect_if_denied
         end
       end
 
@@ -161,6 +163,10 @@ module Authorization
   def redirect_back_or_default(default, options = {})
     redirect_to((session[:return_to] || default), options)
     session[:return_to] = nil
+  end
+
+  def redirect_if_denied
+    redirect_to user_signed_in? ? root_path : core_engine.new_user_session_path
   end
 
   # Inclusion hook to make #current_user and #logged_in? available as ActionView helper methods.
