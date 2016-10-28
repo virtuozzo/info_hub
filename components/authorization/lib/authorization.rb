@@ -8,7 +8,7 @@ module Authorization
   include ActionController::UrlFor
   include ActionController::RackDelegation
 
-  mattr_accessor :app_name, :new_user_session_path
+  mattr_accessor :app_name
 
   protected
 

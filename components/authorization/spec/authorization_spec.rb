@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Authorization, type: :helper do
-  delegate :new_user_session_path, to: :described_class
-
   let!(:wl_1)        { create :user_white_list, ip: '10.0.0.1' }
   let!(:wl_2)        { create :user_white_list, ip: '10.0.0.1/24' }
   let(:current_user) { double(user_white_lists: UserWhiteList.scoped) }
@@ -12,6 +10,7 @@ describe Authorization, type: :helper do
 
       def current_user; end
       def request; end
+
       def session
         {}
       end
@@ -144,7 +143,7 @@ describe SpecController, type: :controller do
         let(:singed_in?) { false }
 
         it 'redirects to log in page if not authorized' do
-          expect(response).to redirect_to new_user_session_path
+          expect(response).to redirect_to controller.core_engine.new_user_session_path
         end
       end
     end
@@ -177,7 +176,7 @@ describe SpecController, type: :controller do
         let(:singed_in?) { false }
 
         it 'redirects to log in page if not authorized' do
-          expect(response).to redirect_to new_user_session_path
+          expect(response).to redirect_to controller.core_engine.new_user_session_path
         end
       end
     end
@@ -196,7 +195,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to new_user_session_path
+        expect(response).to redirect_to controller.core_engine.new_user_session_path
       end
     end
 
@@ -208,7 +207,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to new_user_session_path
+        expect(response).to redirect_to controller.core_engine.new_user_session_path
       end
     end
 
@@ -232,7 +231,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to new_user_session_path
+        expect(response).to redirect_to controller.core_engine.new_user_session_path
       end
     end
 
