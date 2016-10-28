@@ -43,9 +43,9 @@ module OnApp
 
       def self.omit(value)
         id = case value
-             when self; value.id
-             when Fixnum; value
-             when ActiveRecord::Relation; value.pluck(:id)
+             when self then value.id
+             when Fixnum, Array then value
+             when ActiveRecord::Relation then value.pluck(:id)
              else raise ArgumentError, "Unsupported argument type: #{ value.class }"
              end
         id = Array.wrap(id)
