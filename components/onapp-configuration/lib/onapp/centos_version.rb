@@ -1,7 +1,7 @@
 module OnApp
   class CentOSVersion
     def version
-      @version ||= cat_version
+      @version ||= Utils::RedhatRelease.major_version(release_string)
     end
 
     def centos5?
@@ -21,10 +21,8 @@ module OnApp
 
     private
 
-    # TODO: refactor & write specs(CORE-7983)
-    def cat_version
-      /\s(?<version>\d)(\.\d+){1,2}\s/ =~ `cat /etc/redhat-release`
-      version.to_i
+    def release_string
+      @release_string ||= `cat /etc/redhat-release`
     end
   end
 end
