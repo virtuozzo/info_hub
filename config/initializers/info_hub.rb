@@ -1,0 +1,1 @@
+InfoHub.info_hub_file_paths << Core::Engine.root.join('config', 'info_hub.yml')

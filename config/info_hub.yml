@@ -1,0 +1,11 @@
+role:
+  admin_roles:
+    - admin
+  reseller_roles:
+    - reseller
+pagination:
+  per_page: 10
+  items_limits:
+    - 10
+    - 25
+    - 50

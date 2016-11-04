@@ -1,3 +1,7 @@
 ---
 user:
   name: Pibodi
+  login: my_login
+  status:
+    last_login: true
+    admin: false

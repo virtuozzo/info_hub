@@ -1,0 +1,11 @@
+---
+component:
+  name: Component Name
+user:
+  name: Not Pibodi
+  age: 1234
+  email: example@mail.com
+  login: NotMyLogin
+  status:
+    logged: false
+    last_login: false

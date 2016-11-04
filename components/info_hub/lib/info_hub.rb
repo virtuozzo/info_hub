@@ -5,9 +5,15 @@ module InfoHub
 
   extend self
 
-  attr_accessor :default_file_path, :local_file_path
+  attr_accessor :info_hub_file_paths
 
   KeyNotFoundError = Class.new(StandardError)
+  SettingsNotFinalizedError = Class.new(StandardError)
+  SettingsAlreadyFinalizedError = Class.new(StandardError)
+
+  def info_hub_file_paths
+    @info_hub_file_paths ||= []
+  end
 
   def fetch(key)
     settings.fetch(key) { raise_error(key) }
@@ -22,20 +28,26 @@ module InfoHub
     keys.inject(settings) { |settings, key| settings.fetch(key) { raise_error(key) } }
   end
 
+  def finalize!
+    raise SettingsAlreadyFinalizedError, 'InfoHub configuration is already finalized.' if finalized?
+
+    info_hub_file_paths.freeze
+  end
+
+  def finalized?
+    info_hub_file_paths.frozen?
+  end
+
   private
 
   def settings
-    @settings ||= default_settings.deep_merge(local_settings).deep_symbolize_keys
-  end
+    @settings ||= begin
+      raise SettingsNotFinalizedError, 'Settings not finalized' unless finalized?
 
-  def default_settings
-    YAML.load_file(default_file_path)
-  end
-
-  def local_settings
-    return {} unless File.exists?(local_file_path)
-
-    YAML.load_file(local_file_path)
+      info_hub_file_paths.inject({}) do |settings, path|
+        settings.deep_merge!(YAML.load_file(path).deep_symbolize_keys)
+      end
+    end
   end
 
   def raise_error(key)
