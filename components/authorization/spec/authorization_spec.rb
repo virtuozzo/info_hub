@@ -266,7 +266,7 @@ describe SpecController, type: :controller do
           get :authorized
 
           expect(response).to have_http_status :success
-          expect(response.body).to render_template text: 'Success!'
+          expect(response.body).to eq 'Success!'
         end
       end
 
@@ -302,7 +302,7 @@ describe SpecController, type: :controller do
           get :class_authorized
 
           expect(response).to have_http_status :success
-          expect(response.body).to render_template text: 'Success!'
+          expect(response.body).to eq 'Success!'
         end
       end
     end

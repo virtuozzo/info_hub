@@ -3,7 +3,6 @@ module Restrictions
     RESTRICTION_TYPES = %w( by_billing_plan by_user_group ).freeze
     BY_USER_GROUP_TYPE = 'by_user_group'.freeze
 
-    attr_accessible :identifier, :restriction_type
     attr_readonly :identifier, :restriction_type
 
     has_many :sets_resources, class_name: 'Restrictions::SetsResource', dependent: :destroy

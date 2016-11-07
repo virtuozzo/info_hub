@@ -2,8 +2,6 @@ class User < ActiveRecord::Base
   include Permissions::BaseModelMethods
   include Permissions::UserModelMethods.attached_to(:permissions)
 
-  attr_accessible :email
-
   devise :database_authenticatable
 
   attr_writer :suspended, :deleted, :active

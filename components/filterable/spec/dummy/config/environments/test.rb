@@ -1,7 +1,7 @@
 Dummy::Application.configure do
   config.cache_classes = true
 
-  config.serve_static_assets = true
+  config.serve_static_files = true
   config.static_cache_control = 'public, max-age=3600'
 
   config.whiny_nils = true
@@ -13,7 +13,7 @@ Dummy::Application.configure do
 
   config.action_controller.allow_forgery_protection = false
 
-  config.active_record.mass_assignment_sanitizer = :strict
-
   config.active_support.deprecation = :stderr
+
+  config.eager_load = false
 end

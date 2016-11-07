@@ -15,7 +15,7 @@ describe Filterable do
 
     subject(:find) { klass.filter(params) }
 
-    it { is_expected.to be_instance_of ActiveRecord::Relation }
+    it { is_expected.to be_kind_of klass::ActiveRecord::Relation }
 
     it { is_expected.to match_array [todo] }
 

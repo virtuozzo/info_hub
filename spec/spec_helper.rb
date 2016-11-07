@@ -7,6 +7,7 @@ require 'pry'
 require 'shoulda/matchers'
 require 'webrat/core/matchers'
 require 'ffaker'
+require 'factory_girl_rails'
 
 require 'onapp-core'
 
@@ -30,8 +31,16 @@ RSpec.configure do |config|
   config.profile_examples = nil
   config.order = :random
   config.expose_dsl_globally = true
+  config.infer_spec_type_from_file_location!
 
   ActionView::TestCase::TestController.instance_eval do
     helper Core::Engine.routes.url_helpers
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
