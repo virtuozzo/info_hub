@@ -33,9 +33,7 @@ module OnApp
     config_attribute :config_file,                  save_to_file: false, presence: true, default: -> { OnApp::Configuration.config_file_path } # Application accessor for config file
 
     def initialize
-      self.class.defaults.each do |key, value|
-        value = value.call if value.is_a?(Proc)
-
+      self.class.processed_defaults.each do |key, value|
         public_send("#{ key }=", value)
       end
 

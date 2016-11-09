@@ -116,5 +116,33 @@ describe OnApp::Configuration do
         expect(conf.attribute.to_s).to eq '/blah_blah/log'
       end
     end
+
+    describe '.processed_defaults' do
+      it 'executes lambdas' do
+        klass.config_attribute :attribute, default: -> { 'some_text' }, save_to_file: false
+
+        expect(klass.processed_defaults.fetch(:attribute)).to eq 'some_text'
+      end
+    end
+
+    describe '.ignored_save_to_file_defaults' do
+      it 'returns values of save to file attributes as nils' do
+        klass.config_attribute :attribute, default: 1, save_to_file: true
+
+        expect(klass.ignored_save_to_file_defaults.fetch(:attribute)).to be_nil
+      end
+
+      it 'does not modify values of attributes that are not mean to be saved to file' do
+        klass.config_attribute :attribute, default: 1, save_to_file: false
+
+        expect(klass.ignored_save_to_file_defaults.fetch(:attribute)).to eq 1
+      end
+
+      it 'executes lambdas' do
+        klass.config_attribute :attribute, default: -> { 'some_text' }, save_to_file: false
+
+        expect(klass.ignored_save_to_file_defaults.fetch(:attribute)).to eq 'some_text'
+      end
+    end
   end
 end
