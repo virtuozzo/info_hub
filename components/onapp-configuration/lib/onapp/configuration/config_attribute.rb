@@ -12,6 +12,15 @@ module OnApp
         @defaults ||= {}
       end
 
+      # executes all lambdas in defaults
+      def processed_defaults
+        defaults.map { |key, value| [key, value.is_a?(Proc) ? value.call : value] }.to_h
+      end
+
+      def ignored_save_to_file_defaults
+        processed_defaults.merge!(attributes_to_save_to_file.zip([nil]).to_h)
+      end
+
       # DSL to add a new attribute:
       # class Configuration
       #   config_attribute :some_attribute, save_to_file: true, getter: :numerical, setter: :boolean, default: 5, presence: true, length: { maximum: 60 }
