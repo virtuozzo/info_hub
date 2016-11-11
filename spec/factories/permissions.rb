@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :permission do
-    identifier { FFaker::Lorem.sentence.gsub(/\s+/, '.').underscore }
+    identifier { Faker::Lorem.sentence.gsub(/\s+/, '.').underscore }
 
     trait(:pure) {}
   end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :role do
-    label { FFaker::Lorem.sentence }
+    label { Faker::Lorem.sentence }
     identifier { |record| record.label.gsub(/\s+/, '.').underscore }
 
     trait :with_permission do
@@ -12,7 +12,7 @@ FactoryGirl.define do
     trait(:pure) {}
 
     trait :vcloud do
-      label { "vCloud #{ FFaker::Lorem.sentence }" }
+      label { "vCloud #{ Faker::Lorem.sentence }" }
     end
   end
 end
