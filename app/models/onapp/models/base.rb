@@ -54,11 +54,11 @@ module OnApp
       end
 
       def self.add_by_association_user_scope(association = :virtual_machine, klass = 'VirtualMachine')
-        scope :by_user, ->(value) { joins(association).where(association => klass.constantize.by_user(value)) }
+        scope :by_user, ->(value) { joins(association).merge(klass.constantize.by_user(value)) }
       end
 
       def self.add_by_association_user_group_scope(association = :user, klass = 'User')
-        scope :by_user_group, ->(user) { joins(association).where(association => klass.constantize.by_user_group(user)) }
+        scope :by_user_group, ->(user) { joins(association).merge(klass.constantize.by_user_group(user)) }
       end
 
       def self.add_by_billing_user_plan_scope(resource_name = self)
@@ -72,7 +72,7 @@ module OnApp
       end
 
       def self.add_by_association_billing_plan_scope(association, klass)
-        scope :by_billing_plan, ->(user) { joins(association).where(association => klass.constantize.by_billing_plan(user)) }
+        scope :by_billing_plan, ->(user) { joins(association).merge(klass.constantize.by_billing_plan(user)) }
       end
 
       def self.desc(column = :id)
