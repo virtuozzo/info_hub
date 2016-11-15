@@ -1,7 +1,7 @@
 module SimpleForm
   module Components
     module Mask
-      def mask
+      def mask(wrapper_options)
         options[:mask]
       end
     end

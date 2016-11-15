@@ -1,7 +1,7 @@
 module SimpleForm
   module Components
     module LocalizedErrors
-      def localized_errors
+      def localized_errors(wrapper_options)
         localized_error_text if has_errors?
       end
 

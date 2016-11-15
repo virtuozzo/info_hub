@@ -2,7 +2,7 @@
 module SimpleForm
   module Components
     module Slider
-      def slider
+      def slider(wrapper_options)
         if options.has_key?(:slider)
           slider_element(options[:slider])
         else
