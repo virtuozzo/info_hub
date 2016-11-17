@@ -73,7 +73,7 @@ module OnApp
       return false unless config_file.exists? && config_file.read
 
       config_file.each do |k, v|
-        public_send("#{k}=", v) rescue $stderr.puts("WARNING: OnApp configuration key [#{k}] is invalid, please remove this from [#{config_file}] config file!")
+        public_send("#{k}=", v) rescue $stderr.puts(config_key_warning(config_file, k))
       end
 
       @storage_unicast_changed = false
@@ -105,11 +105,21 @@ module OnApp
         errors.each { |e| $stderr.puts "CRITICAL ERROR: #{e}" }
         Process.exit(1)
       end
-      $stderr.puts("WARNING: OnApp configuration file #{config_file} not found! Please go to http://<CP_IP_ADDRESS>/settings/edit and save configuration to create this with the required settings.") unless File.exist?(config_file)
+
+      $stderr.puts(config_file_warning(config_file)) unless File.exist?(config_file)
     end
 
     def default?(key)
       public_send(key) == self.class.defaults[key]
+    end
+
+    def config_key_warning(key)
+      "WARNING: OnApp configuration key [#{key}] is invalid, please remove this from [#{config_file}] config file!"
+    end
+
+    def config_file_warning
+      "WARNING: OnApp configuration file #{config_file} not found! Please go to http://<CP_IP_ADDRESS>/settings/edit and" \
+      " save configuration to create this with the required settings."
     end
 
     private
