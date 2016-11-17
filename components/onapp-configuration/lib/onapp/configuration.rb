@@ -73,7 +73,7 @@ module OnApp
       return false unless config_file.exists? && config_file.read
 
       config_file.each do |k, v|
-        public_send("#{k}=", v) rescue $stderr.puts(config_key_warning(config_file, k))
+        public_send("#{k}=", v) rescue $stderr.puts(config_key_warning(k))
       end
 
       @storage_unicast_changed = false
@@ -106,7 +106,7 @@ module OnApp
         Process.exit(1)
       end
 
-      $stderr.puts(config_file_warning(config_file)) unless File.exist?(config_file)
+      $stderr.puts(config_file_warning) unless File.exist?(config_file)
     end
 
     def default?(key)
