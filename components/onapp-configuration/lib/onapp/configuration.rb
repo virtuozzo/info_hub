@@ -16,7 +16,7 @@ module OnApp
     mattr_accessor :rails_root, :config_file_path
 
     config_attribute :force_saml_login_only,        setter: :boolean, inclusion: [true, false], default: false # This option is used to disable regular login for users imported (or linked with) from SAML identity providers
-    config_attribute :system_email,                 presence: true, :'custom_validators/email' => true, if: :use_email_notifications, default: '' # This email will be used as Application Email
+    config_attribute :system_email,                 default: '' # @OBSOLETE TODO OK@INFRA 5.3 CORE-8204
     config_attribute :system_host,                  default: 'onapp.com' # This address should be IP or Host name of this server (used in emails)
     config_attribute :system_notification,          setter: :boolean, inclusion: [true, false], default: false # Enable/Disable email system notification
     config_attribute :enable_notifications,         setter: :boolean, inclusion: [true, false], default: false # Enable/Disable notifications, new version
