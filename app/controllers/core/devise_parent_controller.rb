@@ -26,6 +26,7 @@ class Core::DeviseParentController < ActionController::Base
   end
 
   def email_cloud_settings_default?
+    # TODO OK@INFRA 5.3 CORE-8204
     if system_notification?
       { system_email:         'app@onapp.com',
         system_support_email: 'support@onapp.com',
