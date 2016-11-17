@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe OnApp::Configuration do
+  let(:config_file) { described_class::FileBackend.new }
+
   before { allow(OnApp).to receive(:centos) { double(version: 6) } }
 
   it 'does not return numerical data for non corresponding attributes' do
@@ -35,12 +37,8 @@ describe OnApp::Configuration do
     let(:custom_config) { { system_email: 'system_email@onapp.com', system_host: '192.12.1.1' } }
     let(:path) { '/tmp/onapp.yml.test' }
     let(:defaults) { described_class.defaults }
-    let(:configuration_class) { OnApp::Configuration }
-    let(:config_file) { configuration_class::FileBackend.new }
 
-    subject { configuration_class.new }
-
-    before { allow(configuration_class).to receive(:config_file_path).and_return path }
+    before { allow(described_class).to receive(:config_file_path).and_return path }
 
     describe '#load_from_file' do
       before { File.write(path, YAML.dump(custom_config)) }
@@ -88,6 +86,18 @@ describe OnApp::Configuration do
 
       expect(conf.system_email).to eq 'new_system_email@onapp.com'
       expect(conf.system_host).to eq '243.12.33.1'
+    end
+  end
+
+  describe '#config_key_warning' do
+    it 'returns file path' do
+      expect(subject.config_key_warning(:some_key)).to match(/on_app.yml/)
+    end
+  end
+
+  describe '#config_file_warning' do
+    it 'returns file path' do
+      expect(subject.config_file_warning).to match(/on_app.yml/)
     end
   end
 end
