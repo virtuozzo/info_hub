@@ -22,9 +22,8 @@ gem 'oj', '2.14.6'
 gem 'simple_form', '3.3.1'
 gem 'simple-navigation', '3.10.0'
 gem 'carrierwave', '0.11.2'
-gem 'will_paginate', '3.0.4'
+gem 'will_paginate', '3.1.5'
 
 group :test do
   gem 'ffaker', '1.32'
 end
-
