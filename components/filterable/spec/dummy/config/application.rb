@@ -15,7 +15,7 @@ module Dummy
     config.assets.enabled = true
     config.assets.version = '1.0'
 
-    config.paths['config/database'] = File.expand_path('../../../../../dummy_database.yml', __dir__)
+    config.paths['config/database'] = File.expand_path('../../../../../../dummy_database.yml', __dir__)
   end
 end
 
