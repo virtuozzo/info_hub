@@ -16,6 +16,8 @@ module Dummy
     config.active_support.escape_html_entities_in_json = true
     config.assets.enabled = true
     config.assets.version = '1.0'
+
+    config.paths['config/database'] = File.expand_path('../../../../../../dummy_database.yml', __dir__)
   end
 end
 
