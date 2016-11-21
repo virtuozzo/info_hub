@@ -35,6 +35,6 @@ class Core::DeviseParentController < ActionController::Base
   end
 
   def system_notification?
-    OnApp.configuration.system_notification
+    OnApp.configuration.enable_notifications
   end
 end

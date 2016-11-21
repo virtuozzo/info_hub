@@ -19,7 +19,7 @@ module OnApp
     config_attribute :system_email,                 presence: true, :'custom_validators/email' => true, if: :use_email_notifications, default: '' # This email will be used as Application Email
     config_attribute :system_host,                  default: 'onapp.com' # This address should be IP or Host name of this server (used in emails)
     config_attribute :system_notification,          setter: :boolean, inclusion: [true, false], default: false # Enable/Disable email system notification
-    config_attribute :enable_notifications,         setter: :boolean, inclusion: [true, false], default: false # Enable/Disable notifications
+    config_attribute :enable_notifications,         setter: :boolean, inclusion: [true, false], default: false # Enable/Disable notifications, new version
     config_attribute :system_support_email,         presence: true, :'custom_validators/email' => true, if: :use_email_notifications, default: '' # This email will be used for alert emails from OnApp system
     config_attribute :system_theme,                 inclusion: SYSTEM_THEMES, default: DEFAULT_SYSTEM_THEME
     config_attribute :pagination_max_items_limit,   getter: :numerical, presence: true, numericality: true, default: 100 # Pagination
@@ -125,7 +125,7 @@ module OnApp
     private
 
     def use_email_notifications
-      system_notification || enable_hourly_storage_report || enable_daily_storage_report
+      enable_notifications || enable_hourly_storage_report || enable_daily_storage_report
     end
   end
 end
