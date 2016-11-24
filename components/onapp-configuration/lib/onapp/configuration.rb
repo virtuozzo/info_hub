@@ -26,8 +26,8 @@ module OnApp
     config_attribute :app_name,                     length: { maximum: 60 }, default: 'OnApp' # Application name
     config_attribute :authentication_key,           save_to_file:false, presence: true, default: AUTHENTHICATION_TOKEN # The authentication key
     config_attribute :storage_unicast,              setter: :boolean, inclusion: [true, false], default: false # Use unicast for OnApp Storage
-    config_attribute :enable_daily_storage_report,  setter: :boolean, inclusion: [true, false], default: false
-    config_attribute :enable_hourly_storage_report, setter: :boolean, inclusion: [true, false], default: false
+    config_attribute :enable_daily_storage_report,  setter: :boolean, default: false
+    config_attribute :enable_hourly_storage_report, setter: :boolean, default: false
     config_attribute :private_key_path,             save_to_file: false, default: -> { OnApp::Configuration.rails_root.join('config', 'keys', 'private') } # Set the Key Pair to use for managing this system. This should be represented by a OnApp::KeyPair instance.
     config_attribute :public_key_path,              save_to_file: false, default: -> { OnApp::Configuration.rails_root.join('config', 'keys', 'public') }
     config_attribute :config_file,                  save_to_file: false, presence: true, default: -> { OnApp::Configuration.config_file_path } # Application accessor for config file
@@ -120,12 +120,6 @@ module OnApp
     def config_file_warning
       "WARNING: OnApp configuration file #{config_file} not found! Please go to http://<CP_IP_ADDRESS>/settings/edit and" \
       " save configuration to create this with the required settings."
-    end
-
-    private
-
-    def use_email_notifications
-      enable_notifications || enable_hourly_storage_report || enable_daily_storage_report
     end
   end
 end
