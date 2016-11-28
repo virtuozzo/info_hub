@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../dummy/config/environment', __FILE__)
+require File.expand_path('dummy/config/environment', __dir__)
 
 require 'rspec/rails'
 require 'pry'
@@ -35,12 +35,5 @@ RSpec.configure do |config|
 
   ActionView::TestCase::TestController.instance_eval do
     helper Core::Engine.routes.url_helpers
-  end
-end
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
   end
 end
