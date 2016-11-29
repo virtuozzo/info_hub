@@ -1,4 +1,4 @@
-require 'core/restrictions' # require it to keep prefix for all tables
+require_relative 'restrictions' # require it to keep prefix for all tables
 
 module Core
   class Engine < ::Rails::Engine
