@@ -1,8 +1,7 @@
 require 'active_support/all'
+require 'yaml'
 
 module InfoHub
-  require_relative 'info_hub/hash_patch'
-
   extend self
 
   attr_accessor :info_hub_file_paths

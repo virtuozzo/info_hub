@@ -5,12 +5,15 @@ module FactoryGirlAdditions
   # callbacks will not work any more!
   def insert(*args)
     record = pure(*args)
-    def record.run_callbacks(*args, &block)
-      if block_given?
-        block.arity.zero? ? yield : yield(self)
+
+    record.instance_eval do
+      def __run_callbacks__(callbacks, &block)
+        yield if block_given?
       end
     end
-    record.save!
+
+    record.save(validate: false)
+
     record
   end
 
@@ -36,9 +39,9 @@ class NoCallbacksStrategy
 
   def result(evaluation)
     evaluation.object.tap do |instance|
-      def instance.run_callbacks(*args, &block)
-        if block_given?
-          block.arity.zero? ? yield : yield(self)
+      instance.instance_eval do
+        def __run_callbacks__(callbacks, &block)
+          yield if block_given?
         end
       end
       evaluation.create(instance)

@@ -5,6 +5,7 @@ module Permissions
   require_relative 'permissions/factory'
   require_relative 'permissions/base_model_methods'
   require_relative 'permissions/user_model_methods'
+  require_relative 'permissions/scopes'
 
   extend self
 

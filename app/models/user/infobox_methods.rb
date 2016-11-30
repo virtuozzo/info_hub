@@ -1,5 +1,4 @@
 class User
-  attr_accessible :display_infoboxes, :hidden_infoboxes
   store :infoboxes
   before_save { display_infoboxes; hidden_infoboxes; true } # initialize default value
 

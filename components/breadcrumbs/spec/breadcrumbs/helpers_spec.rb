@@ -34,8 +34,8 @@ describe Breadcrumbs::Helpers do
     it 'renders breadcrumbs markup' do
       allow(object).to receive(:set_breadcrumbs).and_return [{ title: 'title', url: url }]
       expect(object.render_breadcrumbs).to match '<div class="breadcrumbs">'
-      expect(object.render_breadcrumbs).to match '<a href="/"'
-      expect(object.render_breadcrumbs).to match "<a href=\"#{url}\""
+      expect(object.render_breadcrumbs).to match '<a title=\"'
+      expect(object.render_breadcrumbs).to match "href=\"#{url}\""
     end
 
     context 'sets' do
@@ -46,8 +46,8 @@ describe Breadcrumbs::Helpers do
 
         it 'does not have to set the link' do
           breadcrumbs_expect do |html|
-            expect(html).to match '<a href="/"'
-            expect(html).not_to match "<a href=\"#{url}\""
+            expect(html).to match 'href="/"'
+            expect(html).not_to match "href=\"#{url}\""
           end
         end
       end
@@ -57,8 +57,8 @@ describe Breadcrumbs::Helpers do
           object.action_name = 'index'
 
           breadcrumbs_expect do |html|
-            expect(html).to match '<a href="/"'
-            expect(html).not_to match "<a href=\"#{url}\""
+            expect(html).to match 'href="/"'
+            expect(html).not_to match "href=\"#{url}\""
           end
         end
       end
@@ -68,8 +68,8 @@ describe Breadcrumbs::Helpers do
           object.action_name = 'show'
 
           breadcrumbs_expect do |html|
-            expect(html).to match '<a href="/"'
-            expect(html).to match "<a href=\"#{url}\""
+            expect(html).to match 'href="/"'
+            expect(html).to match "href=\"#{url}\""
           end
         end
       end

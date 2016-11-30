@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*'] + ['Rakefile']
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency 'mysql2', '0.3.14'
-  s.add_dependency 'devise', '2.2.3'
-  s.add_dependency 'rails',  '3.2.22'
+  s.add_dependency 'mysql2'
+  s.add_dependency 'devise'
+  s.add_dependency 'rails'
 
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'rspec-rails'

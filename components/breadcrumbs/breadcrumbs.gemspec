@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*'] + ['README.rdoc']
   s.test_files = Dir['spec/**/*']
 
-  s.add_dependency 'actionpack', '3.2.22'
+  s.add_dependency 'actionpack'
 
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'fuubar'

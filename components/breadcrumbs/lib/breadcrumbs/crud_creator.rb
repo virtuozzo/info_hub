@@ -64,7 +64,7 @@ module Breadcrumbs
     end
 
     def parent_controller_name
-      parent.class.model_name.tableize
+      parent.class.to_s.tableize
     end
 
     def parent_label

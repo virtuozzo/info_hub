@@ -12,7 +12,6 @@ class Role < OnApp::Models::Base
   validates :label, presence: true, uniqueness: true
   validates :identifier, uniqueness: true, allow_nil: true
 
-  attr_accessible :label, :permission_ids, :identifier
   attr_readonly :identifier
 
   scope :all_by_permissions, lambda { |*permission| joins(:permissions).where('permissions.identifier IN (?)', permission.flatten) }

@@ -6,14 +6,6 @@ describe Restrictions::SetsRole do
 
   describe '#validations' do
     describe 'set_id' do
-      it 'is empty' do
-        sets_resource = Restrictions::SetsRole.new(role: role)
-
-        expect(sets_resource.save).to be_falsey
-        expect(sets_resource.errors).to include :set_id
-        expect(sets_resource.errors[:set_id]).to include "can't be blank"
-      end
-
       it 'is valid' do
         sets_resource = Restrictions::SetsRole.new(role: role, set: set)
 
@@ -22,14 +14,6 @@ describe Restrictions::SetsRole do
     end
 
     describe 'role_id' do
-      it 'is empty' do
-        sets_resource = Restrictions::SetsRole.new(set: set)
-
-        expect(sets_resource.save).to be_falsey
-        expect(sets_resource.errors).to include :role_id
-        expect(sets_resource.errors[:role_id]).to include "can't be blank"
-      end
-
       it 'is not uniq' do
         insert :restrictions_sets_role, set: set, role: role
 

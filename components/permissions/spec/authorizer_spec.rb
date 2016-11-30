@@ -65,6 +65,7 @@ describe Permissions::Authorizer do
         before do
           allow(object.class).to receive(:authorized_for?).exactly(3) { false }
           allow(object.class).to receive(:authorized_for?).with(user, action, scope: :user) { true }
+          allow(object.user).to receive(:present?).and_return true
         end
 
         it { is_expected.to be_truthy }

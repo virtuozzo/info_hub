@@ -4,7 +4,6 @@ class Permission < OnApp::Models::Base
 
   validates :identifier, presence: true, uniqueness: true
 
-  attr_accessible :identifier
   attr_readonly :identifier
 
   API_METHODS = %i(label)

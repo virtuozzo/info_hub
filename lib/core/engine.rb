@@ -9,7 +9,10 @@ module Core
 
     initializer :append_migrations do |app|
       unless app.root.to_s.match("#{root}#{File::SEPARATOR}")
-        app.config.paths['db/migrate'].concat(config.paths['db/migrate'].expanded)
+        config.paths['db/migrate'].expanded.each do |path|
+          app.config.paths['db/migrate'] << path
+          ActiveRecord::Migrator.migrations_paths << path
+        end
       end
     end
 

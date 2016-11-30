@@ -18,12 +18,20 @@ module OnApp
       ## Automatically give any entries an identifier
       before_create :generate_identifier
 
-      scope :allowed_for_reseller, ->    { scoped } #stub
-      scope :by_user_group,        ->(*) { scoped } #stub
-      scope :by_billing_plan,      ->(*) { scoped } #stub
-
       def to_s
         respond_to?(:label) ? label : super
+      end
+
+      def self.allowed_for_reseller
+        all
+      end
+
+      def self.by_user_group(user)
+        Permissions::Scopes.by_user_group(name, user)
+      end
+
+      def self.by_billing_plan(user)
+        Permissions::Scopes.by_billing_plan(name, user)
       end
 
       def self.by_id(value)
@@ -35,6 +43,8 @@ module OnApp
       end
 
       def self.by_user(value)
+        return Permissions::Scopes.by_user(name, value) unless column_names.include? 'user_id'
+
         value = Array(value).collect! { |val| !val.nil? && val.respond_to?(:id) ? val.id : val }
         value << nil if value.empty?
 
@@ -50,29 +60,7 @@ module OnApp
              end
         id = Array.wrap(id)
 
-        id.present? ? where(arel_table[:id].not_eq_all(id)) : scoped
-      end
-
-      def self.add_by_association_user_scope(association = :virtual_machine, klass = 'VirtualMachine')
-        scope :by_user, ->(value) { joins(association).merge(klass.constantize.by_user(value)) }
-      end
-
-      def self.add_by_association_user_group_scope(association = :user, klass = 'User')
-        scope :by_user_group, ->(user) { joins(association).merge(klass.constantize.by_user_group(user)) }
-      end
-
-      def self.add_by_billing_user_plan_scope(resource_name = self)
-        scope :by_billing_plan, ->(user) {
-          # TODO BILLING: maybe, throw an exception if resource_name is not appropriate
-          # or move it back to models. Or find some more obvious way to avoid of code duplication
-          where(id: ("Billing::User::Resource::#{ resource_name }".constantize.by_billing_plan(user.billing_plan).
-                                                                              with_target.
-                                                                              pluck(:target_id)))
-        }
-      end
-
-      def self.add_by_association_billing_plan_scope(association, klass)
-        scope :by_billing_plan, ->(user) { joins(association).merge(klass.constantize.by_billing_plan(user)) }
+        id.present? ? where(arel_table[:id].not_eq_all(id)) : all
       end
 
       def self.desc(column = :id)

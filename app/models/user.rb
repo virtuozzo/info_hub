@@ -12,8 +12,6 @@ class User < OnApp::Models::Base
   has_many :permissions, through: :roles
   has_many :restricted_resources, through: :roles
 
-  attr_accessible :role_ids, :system_theme
-
   scope :all_by_permissions, ->(*permissions) { joins(roles: :permissions).where('permissions.identifier IN (?)', permissions.flatten) }
 
 

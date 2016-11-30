@@ -1,6 +1,6 @@
 module Filterable
   def filter(filtering_params)
-    results = is_a?(Class) ? scoped : self
+    results = is_a?(Class) ? all : self
 
     filtering_params.inject(results) do |results, (key, value)|
       # key can be passed with _id at the end or without

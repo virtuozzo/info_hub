@@ -6,7 +6,7 @@ describe Breadcrumbs::CRUDCreator do
   let(:controller_url) { 'parent_controller' }
   let(:controller_url2) { 'child_controller' }
   let(:controller_without_index_label) { 'WithoutIndex Controller' }
-  let(:model) { double(class: double(model_name: 'TestModel'), id: 2, label: 'TestModel Object') }
+  let(:model) { double(class: double(to_s: 'TestModel'), id: 2, label: 'TestModel Object') }
   let(:test_controller_class) do
     Class.new do
       attr_accessor :params, :action_methods, :controller_name
