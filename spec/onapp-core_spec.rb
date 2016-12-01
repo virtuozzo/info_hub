@@ -18,7 +18,7 @@ describe Core do
   end
 
   describe '.concerns' do
-    specify { expect(described_class.concerns).to eq({}) }
+    specify { expect(described_class.concerns).to eq(user: [:theme]) }
   end
 
   describe '.extensions' do
