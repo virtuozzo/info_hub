@@ -1,23 +1,16 @@
 module OnApp
   class CentOSVersion
+    delegate  :centos5?, :centos6?, :centos7?, :not_centos5?,
+              :five?, :six?, :seven?,
+              to: :centos_versioning
+
     def version
       @version ||= Utils::RedhatRelease.major_version(release_string)
     end
 
-    def centos5?
-      version == 5
+    def centos_versioning
+      @centos_versioning ||= ::Utils::CentOSVersion.new(version)
     end
-    alias_method :five?, :centos5?
-
-    def centos6?
-      version == 6
-    end
-    alias_method :six?, :centos6?
-
-    def centos7?
-      version == 7
-    end
-    alias_method :seven?, :centos7?
 
     private
 
