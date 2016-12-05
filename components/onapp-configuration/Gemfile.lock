@@ -1,9 +1,9 @@
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: 3a574d5ae5c78fa8f1cf065e8ef1b2fe43bc8787
+  revision: e1339cbc22f7f73d8367b232461d954e54fdc4c2
   branch: rails4
   specs:
-    onapp-utils (5.2.1)
+    onapp-utils (5.2.3)
       activesupport (< 5)
 
 PATH
@@ -38,7 +38,7 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
-    minitest (5.9.1)
+    minitest (5.10.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -74,4 +74,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
