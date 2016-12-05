@@ -8,7 +8,7 @@ class Core::DeviseParentController < ActionController::Base
   private
 
   def after_sign_out_path_for(resource)
-    core_engine.new_user_session_path
+    onapp.new_user_session_path
   end
 
   def after_sign_in_path_for(resource)

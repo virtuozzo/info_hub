@@ -39,7 +39,7 @@ class SpecController < ApplicationController
 
   def new_user_session; end
 
-  def core_engine
+  def onapp
     OpenStruct.new(new_user_session_path: '/users/log_in')
   end
 end

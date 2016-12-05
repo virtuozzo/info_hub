@@ -9,7 +9,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = 'app@onapp.com'
 
-  config.router_name = :core_engine
+  config.router_name = :onapp
   config.parent_controller = 'Core::DeviseParentController'
 
   # Configure the class responsible to send e-mails.

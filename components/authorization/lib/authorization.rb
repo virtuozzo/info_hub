@@ -166,7 +166,7 @@ module Authorization
   end
 
   def redirect_if_denied
-    redirect_to user_signed_in? ? root_path : core_engine.new_user_session_path
+    redirect_to user_signed_in? ? root_path : onapp.new_user_session_path
   end
 
   # Inclusion hook to make #current_user and #logged_in? available as ActionView helper methods.

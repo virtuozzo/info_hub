@@ -10,7 +10,7 @@ class Core::Users::SessionsController < Devise::SessionsController
   def create
     return super unless force_saml_login?
 
-    redirect_to core_engine.new_user_session_url, alert: t('devise.sessions.regular_login_disabled')
+    redirect_to onapp.new_user_session_url, alert: t('devise.sessions.regular_login_disabled')
   end
 
   def destroy

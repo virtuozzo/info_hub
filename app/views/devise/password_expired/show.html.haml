@@ -1,6 +1,6 @@
 - page_title t('.title', app_name: OnApp.configuration.app_name)
 
-= simple_form_for(resource, as: resource_name, url: [core_engine, resource_name, :password_expired], html: { class: 'password_expired' }) do |f|
+= simple_form_for(resource, as: resource_name, url: [onapp, resource_name, :password_expired], html: { class: 'password_expired' }) do |f|
   = render 'shared/flash_messages'
 
   .text_input

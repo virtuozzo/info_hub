@@ -141,7 +141,7 @@ describe SpecController, type: :controller do
         let(:singed_in?) { false }
 
         it 'redirects to log in page if not authorized' do
-          expect(response).to redirect_to controller.core_engine.new_user_session_path
+          expect(response).to redirect_to controller.onapp.new_user_session_path
         end
       end
     end
@@ -174,7 +174,7 @@ describe SpecController, type: :controller do
         let(:singed_in?) { false }
 
         it 'redirects to log in page if not authorized' do
-          expect(response).to redirect_to controller.core_engine.new_user_session_path
+          expect(response).to redirect_to controller.onapp.new_user_session_path
         end
       end
     end
@@ -193,7 +193,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to controller.core_engine.new_user_session_path
+        expect(response).to redirect_to controller.onapp.new_user_session_path
       end
     end
 
@@ -205,7 +205,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to controller.core_engine.new_user_session_path
+        expect(response).to redirect_to controller.onapp.new_user_session_path
       end
     end
 
@@ -229,7 +229,7 @@ describe SpecController, type: :controller do
 
         get :required
 
-        expect(response).to redirect_to controller.core_engine.new_user_session_path
+        expect(response).to redirect_to controller.onapp.new_user_session_path
       end
     end
 

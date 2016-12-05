@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Core::Engine, at: '/', as: :core_engine
+  mount Core::Engine, at: '/', as: :onapp
 end
