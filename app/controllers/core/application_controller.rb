@@ -40,6 +40,14 @@ class Core::ApplicationController < ActionController::Base
     flash_type.eql?(:now) ? flash.now[flash_style] = msg : flash[flash_style] = msg
   end
 
+  def with_flash_message(object, &block)
+    if block.call(object)
+      flash_message(:notice)
+    else
+      flash_message(:error, msg: object.errors.full_messages.to_sentence)
+    end
+  end
+
   private
 
   def breadcrumbs_nested?

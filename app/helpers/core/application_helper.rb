@@ -126,5 +126,53 @@ module Core
     def format_paginator(section)
       section.gsub("\"/ver/", "\"#{controller.env['PATH_INFO']}/").html_safe
     end
+
+    def round_link(link_label, link_url, options = {}, position = 'right')
+      link_class = ['button', position, options.delete(:class)].join(' ').strip
+      options[:class] = link_class
+      link_to link_label, link_url, options
+    end
+
+    def render_action_buttons(actions = {})
+      return if actions.blank?
+
+      content_tag :div, class: 'actions' do
+        content_tag(:a, class: 'tasksy icon cogtasks') do
+          content_tag :span, '', class: 'taskyar'
+        end +
+        content_tag(:div, class: 'taskymenu') do
+          content_tag :ul, '' do
+            actions.collect do |name, link|
+              concat content_tag(:li, link.html_safe, data: {action: name})
+            end
+          end
+        end
+      end
+    end
+
+    # go_to_type:
+    #   => :action
+    #   => :path
+    def back_button_links(go_to: :index, go_to_type: :action, content_text: I18n.t('links.back'))
+      options_for_content_tag = { class: 'back button' }
+
+      if go_to_type == :action
+        options_for_content_tag[:href] = url_for(controller: controller_name.to_s, action: go_to.to_s)
+        Rails.application.routes.recognize_path options_for_content_tag[:href]
+      else
+        options_for_content_tag[:href] = go_to
+      end
+
+      content_tag(:a, options_for_content_tag) do
+        content_text
+      end
+    end
+
+    def no_content(*args)
+      options = { content_text: t('index.no_content') }.merge(args.extract_options!)
+      content_tag(:div, class: 'no_content') do
+        content_tag(:p) { options[:content_text].html_safe }
+      end
+    end
   end
 end

@@ -26,8 +26,12 @@ module Core
       end
 
       def assume_god_mode_on(user = nil)
-        assume_licensing_ok
         assume_logged_in(user)
+      end
+
+      def assume_god_mode_on!(user = nil)
+        assume_licensing_ok
+        assume_admin_logged_in(user)
       end
 
       def assume_licensing_ok

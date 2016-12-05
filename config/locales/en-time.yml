@@ -1,0 +1,8 @@
+en:
+  time:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+      moth_year: "%B, %Y"
+      short_with_time: "%-d %b %H:%M"
