@@ -11,8 +11,6 @@ en:
       blueprints: Blueprints
       cdn_resources: CDN resources
       user_hourly_stats: CDN Usage Statistics
-      customer_networks: Customer Networks
-      customer_vlans: Customer VLANs
       data_store_groups: Data Store Zones
       data_stores: Data Stores
       disks: Disks
