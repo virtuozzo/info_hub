@@ -12,10 +12,9 @@ GIT
 
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: cc9119fb1b8aa73962403315a17f135d3d4e2e47
-  branch: rails4
+  revision: 91c31229349af3c01e8cc8d7fe88dcd370c42ec1
   specs:
-    onapp-utils (5.2.2)
+    onapp-utils (5.3.0)
       activesupport (< 5)
 
 PATH
@@ -305,4 +304,4 @@ DEPENDENCIES
   yubikey_database_authenticatable!
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

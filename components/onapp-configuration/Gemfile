@@ -2,5 +2,5 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'onapp-utils', git: 'git@bitbucket.org:onappcore/onapp-utils.git', branch: 'rails4'
+gem 'onapp-utils', git: 'git@bitbucket.org:onappcore/onapp-utils.git'
 gem 'activerecord', '4.2.7'

@@ -1,9 +1,8 @@
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: e1339cbc22f7f73d8367b232461d954e54fdc4c2
-  branch: rails4
+  revision: 91c31229349af3c01e8cc8d7fe88dcd370c42ec1
   specs:
-    onapp-utils (5.2.3)
+    onapp-utils (5.3.0)
       activesupport (< 5)
 
 PATH
