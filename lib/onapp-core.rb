@@ -16,6 +16,7 @@ require 'simple_form'
 require 'simple-navigation'
 require 'carrierwave'
 require 'will_paginate'
+require 'responders'
 
 require 'onapp-utils'
 

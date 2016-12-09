@@ -9,7 +9,7 @@ module WillPaginate
 
       alias_method :orig_paginate, :paginate
       def paginate(options)
-        Pagination.per_page = options[:per_page] || self.per_page
+        Pagination.per_page = options.fetch(:per_page, per_page)
 
         rel = orig_paginate(options)
         rel = rel.limit(rel.total_entries) if rel.per_page.zero?
@@ -33,8 +33,6 @@ module WillPaginate
 
   module ViewHelpers
     class LinkRenderer
-      # ITEMS_LIMITS = InfoHub.get(:pagination, :items_limits)
-
       alias_method :orig_to_html, :to_html
       def to_html
         use_container = @options[:container]
@@ -46,6 +44,7 @@ module WillPaginate
       end
 
       protected
+
       def all_items
         if !@options[:skip_all] && @collection.total_entries > items_limits.last && @collection.total_entries <= @collection.max_items_limit
           label = @template.will_paginate_translate :all_label
@@ -85,17 +84,24 @@ module WillPaginate
         tag(:div, @template.select_tag('limits', per_page_numbers + all_items, :id => "limits_#{@collection.object_id}"), :class => 'limits')
       end
 
-      def limit_url limit
+      def limit_url(limit)
         action = @template.params[:action]
         action = @options[:params].fetch(:action) {action} if @options[:params]
         url_params = @template.params.merge(:per_page => limit, :action => action).reject { |key| key.to_sym == @options[:param_name] }
         @template.params.delete(:per_page)
-        @template.url_for url_params
+
+        url_scope.url_for url_params
       end
 
       def items_limits
         @items_limits = [] if @collection.total_pages == 1 && @collection.per_page == items_limits_const.first
         @items_limits ||= items_limits_const.take_while { |limit| limit <= @collection.total_entries && limit <= @collection.max_items_limit }
+      end
+
+      private
+
+      def items_limits_const
+        InfoHub.get(:pagination, :items_limits)
       end
     end
 
@@ -111,7 +117,7 @@ module WillPaginate
       renderer = instantiate_renderer options[:renderer]
       # render HTML for pagination
       renderer.prepare collection, options, self
-      renderer.to_html
+      renderer.to_html.html_safe
     end
 
     def instantiate_renderer renderer
@@ -130,12 +136,6 @@ module WillPaginate
       else
         renderer
       end
-    end
-
-    private
-
-    def items_limits_const
-      InfoHub.get(:pagination, :items_limits)
     end
   end
 
@@ -182,6 +182,27 @@ module WillPaginate
       end
 
       result
+    end
+
+    class LinkRenderer
+      protected
+
+      def url_scope
+        @options[:url_scope] || @template
+      end
+
+      def url(page)
+        @base_url_params ||= begin
+          url_params = merge_get_params(default_url_params)
+          url_params[:only_path] = true
+          merge_optional_params(url_params)
+        end
+
+        url_params = @base_url_params.dup
+        add_current_page_param(url_params, page)
+
+        url_scope.url_for(url_params)
+      end
     end
   end
 
