@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'yubikey_database_authenticatable', git: 'git@bitbucket.org:onappcore/devise_yubikey.git', tag: 'v5.2.0', branch: 'rails4'
+gem 'yubikey_database_authenticatable', git: 'git@bitbucket.org:onappcore/devise_yubikey.git', tag: 'v.5.3.0'
 gem 'onapp-utils', git: 'git@bitbucket.org:onappcore/onapp-utils.git'
 gem 'rails', '4.2.7'
 gem 'devise', '~> 3.5'

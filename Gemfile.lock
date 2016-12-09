@@ -1,10 +1,9 @@
 GIT
   remote: git@bitbucket.org:onappcore/devise_yubikey.git
-  revision: 8cf172fb6e204e727f5ca8258eb647a5c34906d5
-  branch: rails4
-  tag: v5.2.0
+  revision: 1c60a8cea996f650536f64bafb4425d7b020ba8f
+  tag: v.5.3.0
   specs:
-    yubikey_database_authenticatable (5.2.0)
+    yubikey_database_authenticatable (5.3.0)
       devise (~> 3.5)
       haml-rails (~> 0.9)
       rails (~> 4.2)
