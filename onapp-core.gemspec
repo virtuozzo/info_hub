@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'hashie'
+  s.add_dependency 'actionpack-xml_parser', '1.0.2'
 
   s.add_dependency 'haml-rails'
   s.add_dependency 'haml'

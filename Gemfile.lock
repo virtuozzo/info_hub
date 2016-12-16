@@ -20,6 +20,7 @@ PATH
   remote: .
   specs:
     onapp-core (0.0.1)
+      actionpack-xml_parser (= 1.0.2)
       carrierwave
       devise
       devise-encryptable
@@ -57,6 +58,8 @@ GEM
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-xml_parser (1.0.2)
+      actionpack (>= 4.0.0, < 5)
     actionview (4.2.7)
       activesupport (= 4.2.7)
       builder (~> 3.1)

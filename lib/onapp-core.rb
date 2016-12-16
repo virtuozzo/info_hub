@@ -6,6 +6,7 @@ require 'devise_security_extension'
 require 'omniauth-saml'
 require 'omniauth-facebook'
 require 'omniauth-google-oauth2'
+require 'actionpack/xml_parser'
 
 require 'mysql2'
 require 'haml-rails'
