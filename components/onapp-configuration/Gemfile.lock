@@ -1,8 +1,8 @@
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: 91c31229349af3c01e8cc8d7fe88dcd370c42ec1
+  revision: f12151a6f97e07fce8c9d031a619d74f5db96611
   specs:
-    onapp-utils (5.3.0)
+    onapp-utils (5.3.1)
       activesupport (< 5)
 
 PATH
