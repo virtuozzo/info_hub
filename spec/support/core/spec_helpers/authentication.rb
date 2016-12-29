@@ -49,5 +49,5 @@ end
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
-  config.include Core::SpecHelpers::Authentication, type: :controller, type: :helper, authentication: true
+  config.include Core::SpecHelpers::Authentication, type: /controller|helper/, authentication: true
 end
