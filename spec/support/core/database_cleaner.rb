@@ -2,7 +2,7 @@ unless ENV['SKIP_DATABASE_CLEANER']
   require 'database_cleaner'
 
   RSpec.configure do |config|
-    config.before(:suite) do
+    config.before(:suite, database: true) do
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.clean_with(:truncation)
     end
