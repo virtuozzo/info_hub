@@ -12,7 +12,7 @@ unless ENV['SKIP_DATABASE_CLEANER']
 
     config.before(:suite) do
       DatabaseCleaner[:active_record].strategy = :transaction
-      DatabaseCleaner[:sequel].strategy = :transaction
+      DatabaseCleaner[:sequel].strategy = :transaction if defined? Sequel
 
       disable_referential_integrity do
         DatabaseCleaner.clean_with :truncation
