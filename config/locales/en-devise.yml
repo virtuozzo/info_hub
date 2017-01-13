@@ -76,6 +76,10 @@ en:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account has been unlocked successfully. Please sign in.'
       send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
+      new:
+        title: Resend unlock instructions
+        submit: Resend unlock instructions
+        email: E-mail
     omniauth_callbacks:
       success: 'Successfully authenticated from %{kind} account.'
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'

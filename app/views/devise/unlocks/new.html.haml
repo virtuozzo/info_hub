@@ -1,0 +1,11 @@
+- page_title t('.title')
+- caption t('.title')
+
+= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'password_recovery' }) do |f|
+  - if f.object.errors.present?
+    - flash.now[:error] = f.object.errors.full_messages.to_sentence
+    = render 'shared/flash_messages'
+
+  .text_input.field_with_submit
+    = f.input :email, wrapper: :no_label, required: true, input_html: { placeholder: t('.email')}
+    = f.submit nil, title: t('.submit')
