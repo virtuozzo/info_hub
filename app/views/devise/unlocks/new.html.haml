@@ -7,5 +7,5 @@
     = render 'shared/flash_messages'
 
   .text_input.field_with_submit
-    = f.input :email, wrapper: :no_label, required: true, input_html: { placeholder: t('.email')}
+    = f.input :login, wrapper: :no_label, required: true, autofocus: true, input_html: { placeholder: true }
     = f.submit nil, title: t('.submit')

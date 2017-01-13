@@ -79,7 +79,6 @@ en:
       new:
         title: Resend unlock instructions
         submit: Resend unlock instructions
-        email: E-mail
     omniauth_callbacks:
       success: 'Successfully authenticated from %{kind} account.'
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
