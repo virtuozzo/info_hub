@@ -10,7 +10,7 @@ describe OnApp::Configuration do
     expect(subject.app_name).not_to be_kind_of(Fixnum)
   end
 
-  it "does not change non corresponding attributes if their values equals to '1' or true" do
+  it 'does not change non corresponding attributes if their values equals to `1` or true' do
     subject.app_name = '1'
     expect(subject.app_name).to eq('1')
   end
@@ -29,7 +29,7 @@ describe OnApp::Configuration do
 
   it '.use?' do
     expected = double('Expected params')
-    OnApp.configuration.stub(:foo => expected)
+    allow(OnApp.configuration).to receive_messages(:foo => expected)
     expect(OnApp.use?(:foo)).to eq(expected)
   end
 
