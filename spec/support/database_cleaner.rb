@@ -17,6 +17,9 @@ unless ENV['SKIP_DATABASE_CLEANER']
       disable_referential_integrity do
         DatabaseCleaner.clean_with :truncation
       end
+
+      config.after(:each) { |example| sequel_cleaner.clean unless example.metadata[:skip_cleaner] }
+      config.before(:suite) { sequel_cleaner.clean_with :truncation }
     end
 
     config.before(:all, truncate_before_all: true) do
