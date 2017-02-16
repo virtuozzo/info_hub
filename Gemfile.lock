@@ -11,9 +11,9 @@ GIT
 
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: f12151a6f97e07fce8c9d031a619d74f5db96611
+  revision: c92029e068db484595601395a37a675e58201b71
   specs:
-    onapp-utils (5.3.1)
+    onapp-utils (5.4.2)
       activesupport (< 5)
 
 PATH
@@ -306,4 +306,4 @@ DEPENDENCIES
   yubikey_database_authenticatable!
 
 BUNDLED WITH
-   1.13.6
+   1.13.7
