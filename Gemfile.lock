@@ -268,7 +268,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    will_paginate (3.1.5)
+    will_paginate (3.1.2)
     yubikey (1.4.1)
 
 PLATFORMS
@@ -302,7 +302,7 @@ DEPENDENCIES
   simple-navigation (= 3.10.0)
   simple_form (= 3.3.1)
   webrat
-  will_paginate (= 3.1.5)
+  will_paginate (= 3.1.2)
   yubikey_database_authenticatable!
 
 BUNDLED WITH
