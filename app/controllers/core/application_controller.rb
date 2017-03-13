@@ -57,6 +57,39 @@ class Core::ApplicationController < ActionController::Base
   def set_breadcrumbs
     Breadcrumbs::CRUDCreator.prepare_params(self, @virtual_machine, breadcrumbs_nested: breadcrumbs_nested?)
   end
+
+  def use_local_time
+    @use_local_time ||= params[:use_local_time] || (params[:period] && params[:period][:use_local_time])
+  end
+
+  def find_period(from_offset = 48.hours)
+    Time.zone = Time.find_zone(:utc) unless use_local_time
+    from = params[:from] || (params[:period] && params[:period][:startdate])
+    till = params[:till] || (params[:period] && params[:period][:enddate])
+
+    from = nil if from.blank?
+    till = nil if till.blank?
+
+    if use_local_time
+      begin
+        @from = Time.zone.parse(from)
+      rescue
+        @from = from_offset.is_a?(String) || from_offset.is_a?(Symbol) ? Time.current.send(from_offset) : Time.current - from_offset
+      end
+      @till = Time.zone.parse(till) rescue Time.current
+    else
+      begin
+        @from = DateTime.parse(from).utc
+      rescue
+        @from = from_offset.is_a?(String) || from_offset.is_a?(Symbol) ? DateTime.now.utc.send(from_offset) : DateTime.now.utc - from_offset
+      end
+      @till = DateTime.parse(till).utc rescue DateTime.now.utc
+    end
+
+    raise OnApp::WrongTimeRange if @till < @from
+
+    @till = 3.month.since(@from) if @till - @from > 3.month
+  end
 end
 
 # Have to put it there because I'm getting an unexpected errors in controller tests if I put it inside
