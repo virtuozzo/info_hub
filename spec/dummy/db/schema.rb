@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807072802) do
+ActiveRecord::Schema.define(version: 20170328134652) do
 
   create_table "permissions", force: :cascade do |t|
     t.string   "identifier", limit: 255, null: false
@@ -58,11 +58,12 @@ ActiveRecord::Schema.define(version: 20150807072802) do
   add_index "restrictions_sets_roles", ["set_id"], name: "index_restrictions_sets_roles_on_set_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
-    t.string   "label",       limit: 255,             null: false
-    t.string   "identifier",  limit: 255,             null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "label",       limit: 255,                 null: false
+    t.string   "identifier",  limit: 255,                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "users_count", limit: 4,   default: 0
+    t.boolean  "system",                  default: false, null: false
   end
 
   add_index "roles", ["identifier"], name: "index_roles_on_identifier", unique: true, using: :btree

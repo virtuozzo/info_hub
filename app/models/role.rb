@@ -11,8 +11,9 @@ class Role < OnApp::Models::Base
 
   validates :label, presence: true, uniqueness: true
   validates :identifier, uniqueness: true, allow_nil: true
+  validate :label_did_not_change, if: :system?
 
-  attr_readonly :identifier
+  attr_readonly :identifier, :system
 
   scope :all_by_permissions, lambda { |*permission| joins(:permissions).where('permissions.identifier IN (?)', permission.flatten) }
   scope :admin,   -> { where(identifier: admin_role_identifiers.flatten) }
@@ -46,9 +47,22 @@ class Role < OnApp::Models::Base
     hash
   end
 
+  def can_be_deleted?
+    errors.add(:base, :cannot_delete_system_role) and return false if system?
+    errors.add(:base, :cannot_delete_assigned_role) and return false if users.exists?
+
+    true
+  end
+
   protected
 
   def decrement_users_count(user)
     Role.decrement_counter(:users_count, id)
+  end
+
+  def label_did_not_change
+    if persisted? && label_changed?
+      errors.add(:label, :cannot_be_changed)
+    end
   end
 end

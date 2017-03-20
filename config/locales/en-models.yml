@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    errors:
+      models:
+        role:
+          attributes:
+            base:
+              cannot_delete_system_role: system role can't be deleted
+              cannot_delete_assigned_role: you should unassign all users from this role first.
+            label:
+              cannot_be_changed: cannot be changed for a system role
