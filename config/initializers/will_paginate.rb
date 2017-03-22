@@ -1,4 +1,8 @@
 require 'will_paginate/array'
+require 'will_paginate/view_helpers'
+require 'will_paginate/view_helpers/action_view'
+require 'will_paginate/view_helpers/link_renderer'
+require 'will_paginate/active_record'
 
 module WillPaginate
   module ActiveRecord
@@ -8,6 +12,7 @@ module WillPaginate
       end
 
       alias_method :orig_paginate, :paginate
+
       def paginate(options)
         Pagination.per_page = options.fetch(:per_page, per_page)
 
