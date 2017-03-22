@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'oj',                              '2.18.1'
   s.add_dependency 'simple_form',                     '3.4.0'
   s.add_dependency 'simple-navigation',               '3.10.0'
-  s.add_dependency 'carrierwave',                     '0.11.2'
+  s.add_dependency 'carrierwave'
   s.add_dependency 'will_paginate',                   '3.1.5'
 
   s.add_dependency 'onapp-utils'
