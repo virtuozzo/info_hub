@@ -20,7 +20,6 @@ en:
       firewall_rules: Firewall Rules
       hypervisor_groups: Compute Zones
       hypervisors: Compute Resources
-      iframes: IFrames
       image_template_groups: Template Groups
       image_templates: Templates
       io_stats: IO Statistics

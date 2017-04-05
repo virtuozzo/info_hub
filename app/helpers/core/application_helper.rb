@@ -11,6 +11,10 @@ module Core
       @page_title = (icon.blank? ? '' : icon_tag(icon, text)) + ' ' + text
     end
 
+    def page_title!
+      page_title t('.title')
+    end
+
     def render_page_title(text = '')
       (text + (@page_title_text || '')).gsub(/\-/, '&#45;').gsub(/[|>]/, '&#8250;')
     end

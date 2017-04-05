@@ -4,6 +4,6 @@
       - if nav_group[:items].present?
         .sidebar_group
           - if nav_group[:title]
-            %h3= t(".#{nav_group[:title]}")
+            %h3= nav_group[:raw_title] ? nav_group[:title] : t(".#{nav_group[:title]}")
           = render_navigation items: nav_group[:items], expand_all: true
   = render_powered_by
