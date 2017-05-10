@@ -8,15 +8,20 @@ module Presenter
       end
     end
 
-    def initialize(model, view)
+    def initialize(model, view, form = nil)
       @model = model
       @view = view
+      @form = form
 
       super(@model)
     end
 
     def h
       @view
+    end
+
+    def f
+      @form
     end
 
     def humanized?
