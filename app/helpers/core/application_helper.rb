@@ -48,6 +48,10 @@ module Core
       stylesheet_link_tag '/themes/custom' if File.exists?(Rails.root.join('public', 'themes', 'custom.css'))
     end
 
+    def render_global_custom_js_link
+      javascript_include_tag '/themes/custom' if File.exists?(Rails.root.join('public', 'themes', 'custom.js'))
+    end
+
     def render_custom_css_link
       if current_user.theme
         tag(:link, rel: 'stylesheet', type: Mime::CSS, media: 'screen', href: ThemePresenter.new(current_user.theme).stylesheet_url)

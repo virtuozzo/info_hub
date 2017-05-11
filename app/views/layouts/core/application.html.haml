@@ -8,6 +8,7 @@
     = stylesheet_link_tag "themes/#{ system_theme }", media: 'all'
     = javascript_include_tag 'application'
     = render_global_custom_css_link
+    = render_global_custom_js_link
     = render_custom_css_link
     = safe_render Core.partials[:javascript_additions]
   %body.bp
