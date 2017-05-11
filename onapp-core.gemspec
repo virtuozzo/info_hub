@@ -30,8 +30,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'oj'
   s.add_dependency 'simple_form'
   s.add_dependency 'simple-navigation'
-  s.add_dependency 'carrierwave'
-  s.add_dependency 'will_paginate'
+  s.add_dependency 'carrierwave', '0.11.2'
+  s.add_dependency 'will_paginate', '3.1.2'
 
   s.add_dependency 'onapp-utils'
 
