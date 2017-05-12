@@ -10,6 +10,7 @@ module OnApp
 
   class << self
     attr_writer :configuration
+    attr_accessor :billing
 
     def configuration
       @configuration ||= Configuration.new
