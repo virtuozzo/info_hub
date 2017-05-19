@@ -22,6 +22,14 @@ Permissions::Factory.tap do |f|
     actions :read, :update, :restart_dashboard_client, :version, :manage_ssl_certificate
   end
 
+  f.define :dashboard => :dashboard do
+    actions :alerts,
+            :global_stats,
+            :licensing,
+            :show_cloud_dashboard,
+            :show_vcloud_dashboard
+  end
+
   f.define :user do
     use_traits :crud_own
     actions :update_api_key, :change_password, :update_yubikey, :connect_aws, :scopes => :own

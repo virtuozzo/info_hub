@@ -1,3 +1,18 @@
+billing:
+  period_for_statistics: 30
+  dashboard_stats:
+    number_of_top: 20
+  resource:
+    network_group:
+      min_port_speed: 1
+      recommended_port_speed: 10
+    allocation_pool: Allocation Pool
+    reservation_pool: Reservation Pool
+    pay_as_you_go: Pay-As-You-Go
+  node_params:
+    cores_per_node: 1
+    gbs_memory_per_node: 1
+    gbs_storage_per_node: 10
 role:
   admin_roles:
     - admin
