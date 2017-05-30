@@ -5,10 +5,10 @@ module Permissions
     class ActionBucket
       attr_reader :actions
 
-      def initialize(aliases, strict_mode)
-        @actions = {}
+      def initialize(aliases, strict_mode, actions = {})
         @aliases = aliases
         @strict_mode = strict_mode
+        @actions = actions
       end
 
       def add(name, options)
@@ -43,8 +43,7 @@ module Permissions
         return if action_name.nil?
 
         actions.fetch(action_name.to_sym) do
-          raise Permissions::Factory::Errors::InvalidDependency,
-            "#{ action_name } is not defined in #{ namespace }"
+          raise Permissions::Factory::Errors::InvalidDependency, "#{ action_name } is not defined"
         end
       end
 

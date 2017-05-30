@@ -3,7 +3,8 @@ require_relative 'action_bucket'
 module Permissions
   module Factory
     class DSL
-      OPTION_KEYS = %i( dependency key allowed_by scopes ).freeze
+      DEPENDENT_KEYS = %i( dependency allowed_by ).freeze
+      OPTION_KEYS = %i( key scopes ).concat(DEPENDENT_KEYS).freeze
 
       def self.process(block)
         new.process(block)
@@ -16,7 +17,7 @@ module Permissions
         @strict_mode = false
       end
 
-      def action(name, options = {}, &block)
+      def action(name, options = {})
         if @actions.has_key?(name)
           raise Permissions::Factory::Errors::DoubleActionDefinition,
             "#{ name } already was defined in this ActionBucket"
@@ -62,7 +63,7 @@ module Permissions
 
       def process(block)
         instance_exec(&block)
-        action_bucket = Permissions::Factory::ActionBucket.new(@aliases, @strict_mode)
+        action_bucket = Permissions::Factory::ActionBucket.new(@aliases, @strict_mode, @actions)
 
         sorted_actions.each do |name, options|
           check_options!(options)
@@ -84,9 +85,8 @@ module Permissions
       end
 
       def sorted_actions
-        @actions.sort_by do |_, options|
-          standalone = (options.keys & [:dependency, :allowed_by]).empty?
-          standalone ? 0 : 1
+        @actions.sort do |x, y|
+          (x.last.keys & DEPENDENT_KEYS).size <=> (y.last.keys & DEPENDENT_KEYS).size
         end
       end
     end
