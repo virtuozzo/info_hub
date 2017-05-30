@@ -44,6 +44,7 @@ en:
       inactive: 'Your account was not activated yet.'
       session_limited: 'Your login credentials were used in another browser. Please sign in again to continue in this browser.'
       expired: 'Your account has expired due to inactivity. Please contact the site administrator.'
+      system_owner: System Owner cannot be authenticated.
     sessions:
       new:
         title: Log in
