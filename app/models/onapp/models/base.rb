@@ -34,6 +34,10 @@ module OnApp
         Permissions::Scopes.by_billing_plan(name, user)
       end
 
+      def self.by_billing_bucket(user)
+        by_billing_plan(user)
+      end
+
       def self.by_id(value)
         where(id: value)
       end
