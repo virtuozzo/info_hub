@@ -7,15 +7,18 @@ module Permissions
 
       delegate :authorized_for?, to: :klass
 
-      def initialize(klass, user, action)
+      def initialize(klass, user, action, options = {})
         @klass = klass
         @user = user
         @action = action
+        @options = options
       end
 
       def owned_scope
         result = klass.all_scope(user, action)
-        result = apply_roles_sets_restrictions(result)
+        result = apply_roles_sets_restrictions(result) unless @options[:skip_restrictions]
+
+        return result if @options[:skip_permissions]
 
         return result if authorized_for?(user, action, scope: :all)
 

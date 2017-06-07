@@ -22,8 +22,8 @@ module Permissions
         Authorizer.authorized_class?(self, user, action, options)
       end
 
-      def owned(user, action = :read)
-        Authorizer.owned_scope(self, user, action)
+      def owned(user, action = :read, **options)
+        Authorizer.owned_scope(self, user, action, options)
       end
     end
   end
