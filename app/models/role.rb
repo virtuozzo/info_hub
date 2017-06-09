@@ -8,6 +8,7 @@ class Role < OnApp::Models::Base
   has_many :sets_roles, class_name: 'Restrictions::SetsRole', dependent: :destroy
   has_many :sets, through: :sets_roles
   has_many :restricted_resources, source: :resources, through: :sets
+  has_many :transaction_actions, foreign_key: "role_id", class_name: "RolesTransactionAction"
 
   validates :label, presence: true, uniqueness: true
   validates :identifier, uniqueness: true, allow_nil: true
