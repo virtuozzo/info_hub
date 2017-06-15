@@ -13,6 +13,7 @@ FactoryGirl.define do
 
     trait :vcloud do
       label { "vCloud #{ Faker::Lorem.sentence }" }
+      identifier { |record| "vcloud_#{record.label.gsub(/\s+/, '.').underscore}" }
     end
   end
 end
