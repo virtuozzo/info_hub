@@ -97,7 +97,7 @@ module Core
     end
 
     def core_main_navigation_groups
-      [{ items: [nav_item_for(OnApp::Application.routes.url_helpers.root_path)] }]
+      [{ items: [nav_item_for(Core.mount_path)] }]
     end
 
     def block_to_partial(partial_name, options = {}, &block)

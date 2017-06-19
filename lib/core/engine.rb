@@ -16,11 +16,6 @@ module Core
       end
     end
 
-    config.generators do |g|
-      g.orm             :active_record
-      g.test_framework  :rspec
-    end
-
     # https://github.com/rails-api/rails-api/issues/199
     config.middleware.use ActionDispatch::XmlParamsParser
     config.api_only = false

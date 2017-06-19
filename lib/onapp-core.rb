@@ -55,6 +55,9 @@ module Core
   mattr_reader :extensions
   @@extensions = {}
 
+  mattr_reader :mount_path
+  @@mount_path = '/'.freeze
+
   def self.add_concerns(params = {})
     params.each_pair do |key, array|
       concerns[key] ||= []
