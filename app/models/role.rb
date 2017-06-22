@@ -9,6 +9,7 @@ class Role < OnApp::Models::Base
   has_many :sets, through: :sets_roles
   has_many :restricted_resources, source: :resources, through: :sets
   has_many :transaction_actions, foreign_key: "role_id", class_name: "RolesTransactionAction"
+  has_many :transaction_action_approve, through: :transaction_actions
 
   validates :label, presence: true, uniqueness: true
   validates :identifier, uniqueness: true, allow_nil: true
