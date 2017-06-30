@@ -53,6 +53,7 @@ en:
       vcloud_media: Media
       vcloud_catalogs: Catalogs
       vcloud_credentials: vCloud Credentials
+      vcloud_organizations: Organizations
       vcloud_provider_vdcs: Provider Resource Pools
       vdcs: vDCs
       vdc_storage_profiles: vDC Storage Profiles
