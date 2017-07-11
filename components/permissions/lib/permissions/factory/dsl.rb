@@ -22,6 +22,7 @@ module Permissions
           raise Permissions::Factory::Errors::DoubleActionDefinition,
             "#{ name } already was defined in this ActionBucket"
         end
+
         options[:dependency] ||= @dependency_list.last
         @actions[name] = options.freeze
 
@@ -85,8 +86,9 @@ module Permissions
       end
 
       def sorted_actions
-        @actions.sort do |x, y|
-          (x.last.keys & DEPENDENT_KEYS).size <=> (y.last.keys & DEPENDENT_KEYS).size
+        @actions.sort_by do |_, options|
+          (options.key?(:allowed_by) ? 1 : 0) +
+            (options.fetch(:dependency) ? 1 : 0)
         end
       end
     end
