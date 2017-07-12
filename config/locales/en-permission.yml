@@ -76,7 +76,10 @@ en:
         desc: "The user can see all users' prices"
         billing_plan:
           label: See user billing plan
-          desc: See user billing plan
+          desc: See user billing
+        billing_bucket:
+          label: See user bucket
+          desc: See user bucket
         outstanding_amount:
           label:  See user outstanding amount
           desc:  See user outstanding amount

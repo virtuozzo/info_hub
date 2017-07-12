@@ -3,8 +3,7 @@ require_relative 'action_bucket'
 module Permissions
   module Factory
     class DSL
-      DEPENDENT_KEYS = %i( dependency allowed_by ).freeze
-      OPTION_KEYS = %i( key scopes ).concat(DEPENDENT_KEYS).freeze
+      OPTION_KEYS = %i( key scopes dependency allowed_by ).freeze
 
       def self.process(block)
         new.process(block)
