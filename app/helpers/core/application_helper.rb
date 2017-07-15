@@ -150,6 +150,17 @@ module Core
       end
     end
 
+    def truncated_link_with_tooltip(label, path, length: 17)
+      return link_to(label, path) if label.length <= length
+
+      content_tag(:div, class: 'tip') do
+        link_to truncate(label, length: length + 3), path
+      end +
+        content_tag(:div, class: 'tooltip') do
+          split_str(truncate(label, length: 68), length)
+        end
+    end
+
     # go_to_type:
     #   => :action
     #   => :path
