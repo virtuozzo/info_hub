@@ -62,6 +62,7 @@ en:
       vm_hourly_stats: Virtual Machine Statistics
       edge_gateways: Edge Gateways
       vcloud_templates: Orchestration Models
+      billing_buckets: Buckets
     types:
       by_user_group: by User Group
-      by_billing_plan: by Billing Plan
+      by_billing_bucket: By bucket resources
