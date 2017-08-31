@@ -7,5 +7,5 @@
     = render 'shared/flash_messages'
 
   .text_input.field_with_submit
-    = f.input :email, required: true, wrapper: :no_label, input_html: { placeholder: t('activerecord.attributes.user.email') }
+    = f.input :email, required: true, wrapper: :no_label, input_html: { placeholder: t('activerecord.attributes.user.email'), 'aria-label' => t('activerecord.attributes.user.email') }
     = f.submit t('.submit'), title: t('.submit')
