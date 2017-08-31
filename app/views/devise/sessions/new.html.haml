@@ -3,11 +3,11 @@
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = render 'shared/flash_messages'
   .text_input.user_name
-    = f.input :login, wrapper: :no_label, input_html: { placeholder: t('users.users.username'), tabindex: 1}
+    = f.input :login, wrapper: :no_label, input_html: { placeholder: t('users.users.username'), 'aria-label' => t('users.users.username')}
   .text_input.field_with_submit.password
-    = f.input :password, wrapper: :no_label, input_html: { placeholder: t('activerecord.attributes.user.password'), tabindex: 2}
-    = f.submit t('sessions.new.submit'), tabindex: 4
-  = f.input :remember_me, as: :boolean, wrapper: :clear_checkbox, class: 'remember_me', input_html: { tabindex: 3 }
+    = f.input :password, wrapper: :no_label, input_html: { placeholder: t('activerecord.attributes.user.password'), 'aria-label' => t('activerecord.attributes.user.password')}
+    = f.submit t('sessions.new.submit')
+  = f.input :remember_me, as: :boolean, wrapper: :clear_checkbox, class: 'remember_me'
   - if devise_mapping.recoverable?
     = link_to t('.forgot_your_password'), new_password_path(resource_name), class: 'forgotten'
 
