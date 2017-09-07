@@ -271,22 +271,28 @@ module OnApp
 
         def search_fields(*fields)
           return false if fields.empty?
-          singleton_class.send(:define_method, :with_query_string) do |query_string|
+          singleton_class.send(:define_method, :with_query_string) do |query_string, *queries|
             c = connection
             underscored_query = query_string.underscore
             escaped_query = query_string.gsub('%', '\%').gsub('_', '\_').downcase
             the_same = underscored_query == escaped_query
+            conditions = { escaped_query: "%#{escaped_query}%", underscored_query: "%#{underscored_query}%"}
 
             query_string = fields.map do |field|
               column = field.to_s.include?('.') ? field : "#{c.quote_table_name(self.table_name)}.#{c.quote_column_name(field)}"
 
-              arr = ["LOWER(#{column}) LIKE :query"]
-              arr << "LOWER(#{column}) LIKE :query2" unless the_same
+              arr = ["LOWER(#{column}) LIKE :escaped_query"]
+              arr << "LOWER(#{column}) LIKE :underscored_query" unless the_same
+              queries.compact.each_with_index do |q, i|
+                placeholder = "query_#{i}"
+                arr << "LOWER(#{column}) LIKE :#{placeholder}"
+                conditions[placeholder.to_sym] = "%#{q}%"
+              end
 
               arr
             end.flatten.uniq.join(' OR ')
 
-            where(query_string, :query => "%#{escaped_query}%", :query2 => "%#{underscored_query}%")
+            where(query_string, conditions)
           end
         end
       end
