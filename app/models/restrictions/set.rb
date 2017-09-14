@@ -9,5 +9,9 @@ module Restrictions
 
     validates :identifier, uniqueness: true
     validates :label, presence: true, uniqueness: true
+
+    def self.vcloud
+      find_by(identifier: InfoHub.get(:restrictions, :default_vcloud_set))
+    end
   end
 end
