@@ -7,7 +7,8 @@ FactoryGirl.define do
     end
 
     trait :vcloud do
-      identifier InfoHub.get(:restrictions, :default_vcloud_set)
+      identifier 'vcloud'
+      # components tests are failing with InfoHub.get(:restrictions, :default_vcloud_set)
     end
   end
 end
