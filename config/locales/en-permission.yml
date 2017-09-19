@@ -5,7 +5,7 @@ en:
       label: Any action on settings
       desc: The user can take any action on settings
       restart_dashboard_client:
-        label: Restart dashboard client
+        label: Restart license client
         desc: The user can restart the dashboard client
       read:
         label: See read settings
