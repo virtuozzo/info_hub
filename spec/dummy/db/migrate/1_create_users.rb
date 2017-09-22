@@ -44,6 +44,11 @@ class CreateUsers < ActiveRecord::Migration
       t.text     :infoboxes
       t.datetime :password_changed_at
       t.float    :total_amount, default: 0.0
+      t.boolean  :supplied, default: false
+      t.text     :system_theme, limit: 65535
+      t.string   :aws_access_key_id, limit: 255
+      t.string   :aws_secret_access_key, limit: 255
+      t.string   :identifier, limit: 255
     end
   end
 end
