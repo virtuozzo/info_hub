@@ -53,7 +53,7 @@ class InfoboxPresenter < ViewPresenter
   end
 
   def close
-    content_tag(:a, '', href: "/hide_infobox/#{identifier}", class: 'close_flash icon right close')
+    content_tag(:a, '', href: "/hide_infobox/#{identifier}", class: 'close_flash icon right close', 'aria-label' => 'close-info-box')
   end
 
   def title(title)
