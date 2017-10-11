@@ -27,7 +27,7 @@ module OnApp::Responders
           resource_name = actions[current_action]
           per_page = controller.per_page
           per_page = [OnApp.configuration.pagination_max_items_limit.to_i, controller.per_page.to_i].min unless API_MIMES.include?(format)
-          self.resource = self.resource.paginate(:per_page => per_page, :page => controller.page) if self.resource
+          self.resource = self.resource.paginate(per_page: per_page, page: controller.page) if self.resource
           controller.instance_variable_set "@#{resource_name}", self.resource
           set_pagination_headers
         end
