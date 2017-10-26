@@ -75,6 +75,8 @@ module Core::NavigationHelper
   end
 
   def widget_round_button(options = {})
+    return unless options.delete(:display_if) { true }
+
     content_text = options.delete(:content_text) || t('.submit')
 
     href = options.delete(:href) || ''
