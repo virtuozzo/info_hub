@@ -19,7 +19,7 @@ class Core::Users::SessionsController < Devise::SessionsController
       logout_request = OneLogin::RubySaml::Logoutrequest.new
       reset_session
 
-      redirect_to logout_request.create(settings, RelayState: core_engine.new_user_session_url)
+      redirect_to logout_request.create(settings, RelayState: onapp.new_user_session_url)
     else
       super
     end
