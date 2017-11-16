@@ -18,7 +18,7 @@ GIT
 PATH
   remote: .
   specs:
-    onapp-core (0.0.1)
+    onapp-core (5.6.0)
       actionpack-xml_parser (= 1.0.2)
       carrierwave (= 0.11.2)
       devise (= 3.5.10)
@@ -112,7 +112,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faraday (0.12.1)
+    faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffaker (1.32.0)
     fuubar (2.2.0)

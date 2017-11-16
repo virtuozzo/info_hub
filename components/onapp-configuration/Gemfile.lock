@@ -1,8 +1,8 @@
 GIT
   remote: git@bitbucket.org:onappcore/onapp-utils.git
-  revision: f12151a6f97e07fce8c9d031a619d74f5db96611
+  revision: 564a91e9750de1d13344c6b325c052ec8b930ce0
   specs:
-    onapp-utils (5.3.1)
+    onapp-utils (5.4.3)
       activesupport (< 5)
 
 PATH
@@ -30,14 +30,16 @@ GEM
     arel (6.0.3)
     builder (3.2.2)
     coderay (1.1.1)
+    concurrent-ruby (1.0.5)
     diff-lcs (1.2.5)
     fuubar (2.2.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
-    i18n (0.7.0)
-    json (1.8.3)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
+    json (1.8.6)
     method_source (0.8.2)
-    minitest (5.10.1)
+    minitest (5.10.3)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -57,8 +59,8 @@ GEM
     rspec-support (3.5.0)
     ruby-progressbar (1.8.1)
     slop (3.6.0)
-    thread_safe (0.3.5)
-    tzinfo (1.2.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
 
 PLATFORMS
@@ -73,4 +75,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.13.6
+   1.15.4

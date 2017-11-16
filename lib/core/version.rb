@@ -1,3 +1,3 @@
 module Core
-  VERSION = '0.0.1'.freeze
+  VERSION = '5.6.0'.freeze
 end
