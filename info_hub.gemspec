@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.email = %w( onapp@onapp.com )
   s.homepage = 'https://github.com/OnApp/info_hub'
   s.summary = 'Handy library to read from YAML files'
+  s.license = 'Apache 2.0'
   s.files = Dir['{app,config,db,lib}/**/*'] + %w( README.md )
   s.required_ruby_version = '>= 2.0'
 
