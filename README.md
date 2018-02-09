@@ -6,10 +6,10 @@
 [![Gem Version](https://badge.fury.io/rb/info_hub.svg)][gem]
 [![Build Status](https://travis-ci.org/OnApp/info_hub.svg?branch=master)][travis]
 
-This gem delivers a simple DSL to read data from YAML files which might be useful for storing some basic knowledge around the application.
+This gem delivers a simple DSL to read data from YAML files. It might be useful for storing some basic knowledge around the application.
 
 ### Installation
-Add to your `Gemfile`:
+Add the following code to your `Gemfile` and run bundle install
 
 ```ruby
 # Gemfile
@@ -25,7 +25,7 @@ percentage:
     max: 100
 ```
 
-Then add add path to that file to `InfoHub` paths (in `config/initializers/info_hub.rb`)
+Then add path to that file to `InfoHub` paths (in `config/initializers/info_hub.rb`)
 ```ruby
 # config/initializers/info_hub.rb
 InfoHub.info_hub_file_paths << File.expand_path('../info_hub.yml', __dir__)
