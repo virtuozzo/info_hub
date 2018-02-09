@@ -26,6 +26,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rake (12.2.1)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -53,6 +54,7 @@ DEPENDENCIES
   fuubar
   info_hub!
   pry
+  rake
   rspec
 
 BUNDLED WITH
