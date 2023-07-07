@@ -5,9 +5,9 @@ require 'info_hub/version'
 Gem::Specification.new do |s|
   s.name = 'info_hub'
   s.version = InfoHub::VERSION
-  s.authors = ['OnApp Ltd.']
-  s.email = %w( onapp@onapp.com )
-  s.homepage = 'https://github.com/OnApp/info_hub'
+  s.authors = ['Virtuozzo']
+  s.email = 'igor.sidorov@virtuozzo.com'
+  s.homepage = 'https://github.com/virtuozzo/info_hub'
   s.summary = 'Handy library to read from YAML files'
   s.license = 'Apache 2.0'
   s.files = Dir['{app,config,db,lib}/**/*'] + %w( README.md )
