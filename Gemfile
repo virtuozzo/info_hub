@@ -1,5 +1,3 @@
 source 'https://rubygems.org'
-gemspec
 
-gem 'activesupport', '4.2.7'
-gem 'rake'
+gemspec

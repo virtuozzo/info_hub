@@ -2,6 +2,7 @@
 /coverage
 *.log
 /tmp/*
+Gemfile.lock
 
 .DS_Store
 .idea
